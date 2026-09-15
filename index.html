@@ -5,36 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#111827">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>Sunday Smashers</title>
+
   <style>
     * {
       box-sizing: border-box;
     }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #f3f4f6;
       color: #111827;
     }
+
     header {
       background: #111827;
       color: white;
       text-align: center;
       padding: 22px 15px;
     }
+
     header h1 {
       margin: 0;
       font-size: 28px;
     }
+
     header p {
       margin: 6px 0 0;
       color: #d1d5db;
     }
+
     .container {
       max-width: 900px;
       margin: auto;
       padding: 15px;
     }
+
     .card {
       background: white;
       border-radius: 14px;
@@ -42,17 +50,26 @@
       margin-bottom: 15px;
       box-shadow: 0 3px 10px rgba(0,0,0,.08);
     }
+
     h2 {
       margin-top: 0;
     }
-    input {
+
+    h3 {
+      margin-top: 5px;
+    }
+
+    input,
+    select {
       width: 100%;
       padding: 14px;
       border: 1px solid #d1d5db;
       border-radius: 9px;
       font-size: 16px;
       margin-bottom: 10px;
+      background: white;
     }
+
     button {
       width: 100%;
       padding: 13px;
@@ -63,77 +80,112 @@
       cursor: pointer;
       margin-top: 7px;
     }
+
     button:disabled {
       opacity: .5;
       cursor: not-allowed;
     }
+
     .primary {
       background: #2563eb;
       color: white;
     }
+
     .success {
       background: #16a34a;
       color: white;
     }
+
     .danger {
       background: #dc2626;
       color: white;
     }
+
     .dark {
       background: #111827;
       color: white;
     }
+
     .purple {
       background: #7c3aed;
       color: white;
     }
+
     .orange {
       background: #ea580c;
       color: white;
     }
+
     .blue {
       background: #2563eb;
       color: white;
     }
+
+    .gray {
+      background: #6b7280;
+      color: white;
+    }
+
+    .teal {
+      background: #0f766e;
+      color: white;
+    }
+
+    .small-button {
+      width: auto;
+      padding: 7px 10px;
+      font-size: 12px;
+      margin: 3px;
+    }
+
     .court {
       border: 2px solid #e5e7eb;
       border-radius: 12px;
       padding: 15px;
       margin-bottom: 12px;
     }
+
     .playing {
       background: #ecfdf5;
       border-color: #86efac;
     }
+
     .player {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 10px;
       border-bottom: 1px solid #e5e7eb;
+      gap: 10px;
     }
+
     .player:last-child {
       border-bottom: 0;
     }
+
     .player-name {
       font-weight: bold;
     }
+
     .game-count {
       color: #6b7280;
       font-size: 13px;
       margin-top: 3px;
     }
+
     .remove-btn {
       width: auto;
       margin: 0;
       padding: 6px 10px;
       font-size: 12px;
     }
+
     .teams {
       display: flex;
       gap: 10px;
       margin-top: 12px;
     }
+
     .team {
       flex: 1;
       background: white;
@@ -141,17 +193,20 @@
       border-radius: 8px;
       padding: 10px;
     }
+
     .status {
       text-align: center;
       font-size: 13px;
       font-weight: bold;
       margin-bottom: 15px;
     }
+
     .empty {
       text-align: center;
       color: #6b7280;
       padding: 10px;
     }
+
     .badge {
       display: inline-block;
       background: #dbeafe;
@@ -160,10 +215,32 @@
       border-radius: 999px;
       font-size: 12px;
     }
+
+    .badge-green {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .badge-red {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .badge-orange {
+      background: #ffedd5;
+      color: #9a3412;
+    }
+
+    .badge-purple {
+      background: #ede9fe;
+      color: #6d28d9;
+    }
+
     .next-up {
       background: #eff6ff;
       border: 2px solid #bfdbfe;
     }
+
     .next-player {
       display: inline-block;
       background: white;
@@ -173,12 +250,15 @@
       margin: 4px;
       font-weight: bold;
     }
+
     .admin {
       display: none;
     }
+
     .admin.active {
       display: block;
     }
+
     .session-status {
       text-align: center;
       padding: 12px;
@@ -186,17 +266,117 @@
       margin-bottom: 15px;
       font-weight: bold;
     }
+
     .session-active {
       background: #dcfce7;
       color: #166534;
     }
+
     .session-complete {
       background: #fef3c7;
       color: #92400e;
     }
+
+    .admin-section {
+      border-top: 1px solid #e5e7eb;
+      margin-top: 18px;
+      padding-top: 18px;
+    }
+
+    .admin-section:first-child {
+      border-top: 0;
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    .admin-section h3 {
+      margin-bottom: 10px;
+    }
+
+    .setting-row {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+
+    .setting-label {
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
+
+    .check-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+      font-weight: bold;
+    }
+
+    .check-wrap input {
+      width: 22px;
+      height: 22px;
+      margin: 0;
+    }
+
+    .player-admin {
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+
+    .player-admin-name {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .player-admin-info {
+      color: #6b7280;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .admin-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .admin-actions button {
+      flex: 1;
+      min-width: 100px;
+    }
+
+    .locked-info {
+      font-size: 12px;
+      color: #7c3aed;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    .unavailable {
+      opacity: .6;
+    }
+
+    .replacement-box {
+      background: #fff7ed;
+      border: 1px solid #fdba74;
+      border-radius: 10px;
+      padding: 10px;
+      margin-top: 10px;
+    }
+
+    .replacement-box select {
+      margin-bottom: 5px;
+    }
+
     /* ============================================================
        ADMIN PIN MODAL
        ============================================================ */
+
     #adminModal {
       display: none;
       position: fixed;
@@ -207,6 +387,7 @@
       justify-content: center;
       padding: 20px;
     }
+
     .admin-modal-box {
       background: white;
       width: 100%;
@@ -216,33 +397,40 @@
       text-align: center;
       box-shadow: 0 10px 30px rgba(0,0,0,.25);
     }
+
     .admin-modal-box h2 {
       margin-bottom: 8px;
     }
+
     .admin-modal-box p {
       color: #6b7280;
       margin-top: 0;
       margin-bottom: 18px;
     }
+
     #adminPinInput {
       text-align: center;
       font-size: 26px;
       letter-spacing: 8px;
       margin-bottom: 8px;
     }
+
     .cancel-button {
       background: #e5e7eb;
       color: #111827;
     }
+
     /* ============================================================
        TOP PLAYERS
        ============================================================ */
+
     .top-players {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
       margin-bottom: 18px;
     }
+
     .top-player {
       text-align: center;
       padding: 15px 8px;
@@ -250,50 +438,61 @@
       background: #f9fafb;
       border: 1px solid #e5e7eb;
     }
+
     .top-player:first-child {
       background: #fffbeb;
       border-color: #fcd34d;
     }
+
     .top-medal {
       font-size: 30px;
     }
+
     .top-name {
       font-weight: bold;
       margin-top: 5px;
     }
+
     .top-rating {
       font-size: 13px;
       color: #6b7280;
       margin-top: 4px;
     }
+
     .awards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 8px;
     }
+
     .award {
       background: #f9fafb;
       border-radius: 10px;
       padding: 10px;
       text-align: center;
     }
+
     .award-title {
       font-size: 11px;
       color: #6b7280;
       font-weight: bold;
     }
+
     .award-name {
       font-weight: bold;
       margin-top: 5px;
     }
+
     .award-value {
       font-size: 12px;
       color: #6b7280;
       margin-top: 3px;
     }
+
     /* ============================================================
        RANKINGS
        ============================================================ */
+
     .ranking-row {
       display: grid;
       grid-template-columns: 40px 1fr repeat(7, auto);
@@ -303,93 +502,116 @@
       border-bottom: 1px solid #e5e7eb;
       font-size: 13px;
     }
+
     .ranking-row:last-child {
       border-bottom: 0;
     }
+
     .rank-number {
       font-size: 18px;
       font-weight: bold;
     }
+
     .rank-name {
       font-weight: bold;
     }
+
     .rank-stat {
       text-align: center;
       min-width: 32px;
     }
+
     .rank-header {
       font-size: 10px;
       color: #6b7280;
       font-weight: bold;
     }
+
     .win {
       color: #16a34a;
       font-weight: bold;
     }
+
     .loss {
       color: #dc2626;
       font-weight: bold;
     }
+
     .positive {
       color: #16a34a;
       font-weight: bold;
     }
+
     .negative {
       color: #dc2626;
       font-weight: bold;
     }
+
     .rating {
       color: #7c3aed;
       font-weight: bold;
     }
+
     /* ============================================================
        MATCH HISTORY
        ============================================================ */
+
     .match-history {
       padding: 12px 0;
       border-bottom: 1px solid #e5e7eb;
     }
+
     .match-history:last-child {
       border-bottom: 0;
     }
+
     .match-court {
       font-size: 12px;
       color: #6b7280;
       margin-bottom: 5px;
     }
+
     .match-team {
       font-weight: bold;
       margin: 4px 0;
     }
+
     .match-score {
       font-size: 22px;
       font-weight: bold;
       margin: 6px 0;
     }
+
     .winner-label {
       color: #16a34a;
       font-size: 12px;
       font-weight: bold;
     }
+
     .rating-change {
       font-size: 12px;
       color: #7c3aed;
       font-weight: bold;
       margin-top: 5px;
     }
+
     /* ============================================================
        MOBILE
        ============================================================ */
+
     @media (max-width: 600px) {
       .teams {
         flex-direction: column;
       }
+
       .top-players {
         grid-template-columns: 1fr;
       }
+
       .awards {
         grid-template-columns: 1fr;
       }
+
       .ranking-row {
         grid-template-columns:
           25px
@@ -398,76 +620,116 @@
         gap: 2px;
         font-size: 10px;
       }
+
       .rank-stat {
         min-width: 25px;
       }
+
       .rank-header {
         font-size: 7px;
       }
+
       .rank-number {
         font-size: 14px;
+      }
+
+      .admin-actions {
+        flex-direction: column;
+      }
+
+      .admin-actions button {
+        width: 100%;
       }
     }
   </style>
 </head>
+
 <body>
+
 <header>
   <h1>🏓 Sunday Smashers</h1>
   <p>Pickleball Queue • Smart Rotation</p>
 </header>
+
 <div class="container">
+
   <!-- SESSION STATUS -->
   <div id="sessionStatus"
        class="session-status session-active">
     🟢 SESSION ACTIVE
   </div>
+
   <!-- CONNECTION -->
   <div id="connectionStatus"
        class="status">
     Connecting to Firebase...
   </div>
+
   <!-- ============================================================
        JOIN QUEUE
        ============================================================ -->
+
   <div class="card">
+
     <h2>🙋 Join Queue</h2>
+
+    <select id="playerSelect">
+      <option value="">Select player...</option>
+    </select>
+
     <input
       id="playerName"
       type="text"
       maxlength="30"
-      placeholder="Enter your name"
+      placeholder="Or enter new player name"
     >
+
     <button
       class="primary"
       id="joinButton">
       JOIN QUEUE
     </button>
+
   </div>
+
   <!-- ============================================================
        NEXT UP
        ============================================================ -->
+
   <div class="card next-up">
+
     <h2>⏭️ Next Up</h2>
+
     <div id="nextUp">
       <div class="empty">
         Waiting for players...
       </div>
     </div>
+
   </div>
+
   <!-- ============================================================
        COURTS
        ============================================================ -->
+
   <div class="card">
+
     <h2>🎾 Courts</h2>
+
     <div id="court1"
          class="court"></div>
+
     <div id="court2"
          class="court"></div>
+
   </div>
+
   <!-- ============================================================
        QUEUE
        ============================================================ -->
+
   <div class="card">
+
     <h2>
       📋 Queue
       <span id="queueCount"
@@ -475,106 +737,308 @@
         0 / 30
       </span>
     </h2>
+
     <div id="queueList">
       <div class="empty">
         No players waiting.
       </div>
     </div>
+
   </div>
+
   <!-- ============================================================
        TOP PLAYERS
        ============================================================ -->
+
   <div class="card">
+
     <h2>🏆 Top Players</h2>
+
     <div id="topPlayers">
       <div class="empty">
         Complete some games to see the Top Players.
       </div>
     </div>
+
     <div id="awards"></div>
+
   </div>
+
   <!-- ============================================================
        RANKINGS
        ============================================================ -->
+
   <div class="card">
+
     <h2>📊 Rankings</h2>
+
     <div id="rankingsList">
       <div class="empty">
         No rankings yet.
       </div>
     </div>
+
   </div>
+
   <!-- ============================================================
        MATCH HISTORY
        ============================================================ -->
+
   <div class="card">
+
     <h2>📜 Match History</h2>
+
     <div id="matchHistoryList">
       <div class="empty">
         No matches completed yet.
       </div>
     </div>
+
   </div>
+
   <!-- ============================================================
        ADMIN
        ============================================================ -->
+
   <div class="card">
+
     <h2>🔐 Admin</h2>
+
     <button
       class="dark"
       id="adminLoginButton">
       Admin Login
     </button>
+
     <div id="adminPanel"
          class="admin">
-      <button
-        class="success"
-        id="startCourt1Button">
-        ▶️ Start Next Game — Court 1
-      </button>
-      <button
-        class="success"
-        id="startCourt2Button">
-        ▶️ Start Next Game — Court 2
-      </button>
-      <button
-        class="orange"
-        id="endCourt1Button">
-        ⏹️ End Game — Court 1
-      </button>
-      <button
-        class="orange"
-        id="endCourt2Button">
-        ⏹️ End Game — Court 2
-      </button>
-      <hr>
-      <button
-        class="purple"
-        id="completeSessionButton">
-        🏆 COMPLETE SESSION
-      </button>
-      <button
-        class="blue"
-        id="newSessionButton">
-        🔄 START NEW SESSION
-      </button>
-      <button
-        class="danger"
-        id="resetButton">
-        ⚠️ RESET SESSION
-      </button>
+
+      <!-- ========================================================
+           GAME CONTROLS
+           ======================================================== -->
+
+      <div class="admin-section">
+
+        <h3>🎾 Game Controls</h3>
+
+        <button
+          class="success"
+          id="startCourt1Button">
+          ▶️ Start Next Game — Court 1
+        </button>
+
+        <button
+          class="success"
+          id="startCourt2Button">
+          ▶️ Start Next Game — Court 2
+        </button>
+
+        <button
+          class="orange"
+          id="endCourt1Button">
+          ⏹️ End Game — Court 1
+        </button>
+
+        <button
+          class="orange"
+          id="endCourt2Button">
+          ⏹️ End Game — Court 2
+        </button>
+
+      </div>
+
+      <!-- ========================================================
+           MATCHMAKING SETTINGS
+           ======================================================== -->
+
+      <div class="admin-section">
+
+        <h3>⚙️ Matchmaking Settings</h3>
+
+        <div class="setting-row">
+
+          <div class="setting-label">
+            Maximum Games Per Player
+          </div>
+
+          <input
+            id="maxGamesInput"
+            type="number"
+            min="0"
+            max="50"
+            value="0"
+          >
+
+          <div class="game-count">
+            Set to 0 for unlimited games.
+          </div>
+
+          <button
+            class="blue"
+            id="saveMaxGamesButton">
+            💾 SAVE MAX GAMES
+          </button>
+
+        </div>
+
+        <div class="setting-row">
+
+          <div class="setting-label">
+            Matchmaking Mode
+          </div>
+
+          <select id="matchmakingMode">
+
+            <option value="mix">
+              Mix Skills
+            </option>
+
+            <option value="group">
+              Group by Skill
+            </option>
+
+          </select>
+
+          <button
+            class="blue"
+            id="saveMatchmakingButton">
+            💾 SAVE MATCHMAKING MODE
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- ========================================================
+           VOICE
+           ======================================================== -->
+
+      <div class="admin-section">
+
+        <h3>🔊 Voice Announcements</h3>
+
+        <label class="check-wrap">
+
+          <input
+            id="voiceToggle"
+            type="checkbox"
+          >
+
+          Enable Voice Announcements
+
+        </label>
+
+        <button
+          class="teal"
+          id="voiceTestButton">
+          🔊 TEST VOICE
+        </button>
+
+      </div>
+
+      <!-- ========================================================
+           ADD PLAYER
+           ======================================================== -->
+
+      <div class="admin-section">
+
+        <h3>➕ Add Player</h3>
+
+        <input
+          id="newPlayerName"
+          type="text"
+          maxlength="30"
+          placeholder="Player name"
+        >
+
+        <select id="newPlayerSkill">
+
+          <option value="Beginner">
+            Beginner
+          </option>
+
+          <option value="Intermediate"
+                  selected>
+            Intermediate
+          </option>
+
+          <option value="Advanced">
+            Advanced
+          </option>
+
+        </select>
+
+        <button
+          class="primary"
+          id="addPlayerButton">
+          ➕ ADD PLAYER
+        </button>
+
+      </div>
+
+      <!-- ========================================================
+           PLAYER MANAGEMENT
+           ======================================================== -->
+
+      <div class="admin-section">
+
+        <h3>👥 Player Management</h3>
+
+        <div id="adminPlayersList">
+          <div class="empty">
+            No players.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ========================================================
+           SESSION
+           ======================================================== -->
+
+      <div class="admin-section">
+
+        <h3>🏆 Session</h3>
+
+        <button
+          class="purple"
+          id="completeSessionButton">
+          🏆 COMPLETE SESSION
+        </button>
+
+        <button
+          class="blue"
+          id="newSessionButton">
+          🔄 START NEW SESSION
+        </button>
+
+        <button
+          class="danger"
+          id="resetButton">
+          ⚠️ RESET EVERYTHING
+        </button>
+
+      </div>
+
     </div>
   </div>
+
 </div>
+
 <!-- ============================================================
      ADMIN PIN MODAL
      ============================================================ -->
+
 <div id="adminModal">
+
   <div class="admin-modal-box">
+
     <h2>🔐 Admin Login</h2>
+
     <p>
       Enter the 4-digit Admin PIN
     </p>
+
     <input
       id="adminPinInput"
       type="password"
@@ -584,24 +1048,32 @@
       autocomplete="off"
       placeholder="••••"
     >
+
     <button
       id="adminPinLogin"
       class="dark">
       LOGIN
     </button>
+
     <button
       id="adminPinCancel"
       class="cancel-button">
       CANCEL
     </button>
+
   </div>
+
 </div>
+
 <script type="module">
+
 /* ============================================================
    FIREBASE
    ============================================================ */
+
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
 import {
   getDatabase,
   ref,
@@ -611,151 +1083,497 @@ import {
   onValue
 }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-database.js";
+
+
 const firebaseConfig = {
+
   apiKey:
     "AIzaSyCKoyLq7dlxiUWdRglwncvC72LJtfm5UBc",
+
   authDomain:
     "sunday-smashers.firebaseapp.com",
+
   databaseURL:
     "https://sunday-smashers-default-rtdb.asia-southeast1.firebasedatabase.app/",
+
   projectId:
     "sunday-smashers",
+
   storageBucket:
     "sunday-smashers.firebasestorage.app",
+
   messagingSenderId:
     "104498391905",
+
   appId:
     "1:104498391905:web:28215912f10230bf767320"
 };
+
+
 const app =
   initializeApp(firebaseConfig);
+
 const database =
   getDatabase(app);
+
+
 /* ============================================================
    DATABASE REFERENCES
    ============================================================ */
+
 const playersRef =
   ref(database, "players");
+
 const queueRef =
   ref(database, "queue");
+
 const courtsRef =
   ref(database, "courts");
+
 const historyRef =
   ref(database, "matchHistory");
+
 const sessionRef =
   ref(database, "session");
+
+const settingsRef =
+  ref(database, "settings");
+
+
 /* ============================================================
    LOCAL DATA
    ============================================================ */
+
 let playersData = {};
 let queueData = {};
 let courtsData = {};
 let historyData = {};
+
 let sessionData = {
+
   status: "active",
+
   startedAt: Date.now(),
+
   completedAt: null
+
 };
+
+let settingsData = {
+
+  maxGames: 0,
+
+  matchmakingMode: "mix"
+
+};
+
 let isAdmin = false;
+
+
+/* ============================================================
+   CONSTANTS
+   ============================================================ */
+
 const MAX_QUEUE = 30;
+
+const DEFAULT_RATING = 1000;
+
+const ADMIN_PIN = "1234";
+
+
+/* ============================================================
+   VOICE
+   ============================================================ */
+
+let voiceEnabled = false;
+
+let courtsVoiceInitialized = false;
+
+let historyVoiceInitialized = false;
+
+let lastAnnouncedCourts = {
+
+  court1: null,
+
+  court2: null
+
+};
+
+let lastAnnouncedHistory = {};
+
+
+function announce(text) {
+
+  if (!window.speechSynthesis) {
+
+    alert(
+      "Speech synthesis is not supported by this browser."
+    );
+
+    return;
+
+  }
+
+  if (!voiceEnabled) {
+
+    return;
+
+  }
+
+  try {
+
+    window.speechSynthesis.cancel();
+
+    window.speechSynthesis.resume();
+
+    const utterance =
+      new SpeechSynthesisUtterance(text);
+
+    utterance.lang = "en-US";
+
+    utterance.rate = 0.92;
+
+    utterance.pitch = 1;
+
+    utterance.volume = 1;
+
+    const voices =
+      window.speechSynthesis.getVoices();
+
+    const preferred =
+
+      voices.find(
+        v => /^en-PH/i.test(v.lang)
+      ) ||
+
+      voices.find(
+        v => /^en-US/i.test(v.lang)
+      ) ||
+
+      voices.find(
+        v => /^en-GB/i.test(v.lang)
+      ) ||
+
+      voices.find(
+        v => /^en/i.test(v.lang)
+      );
+
+    if (preferred) {
+
+      utterance.voice = preferred;
+
+    }
+
+    utterance.onstart = () => {
+
+      console.log(
+        "Voice started:",
+        text
+      );
+
+    };
+
+    utterance.onerror = event => {
+
+      console.error(
+        "Speech synthesis error:",
+        event
+      );
+
+    };
+
+    window.speechSynthesis.speak(
+      utterance
+    );
+
+  } catch (error) {
+
+    console.error(
+      "VOICE ERROR:",
+      error
+    );
+
+  }
+
+}
+
+
+if ("speechSynthesis" in window) {
+
+  window.speechSynthesis.onvoiceschanged =
+    () => {
+
+      window.speechSynthesis
+        .getVoices();
+
+    };
+
+}
+
+
 /* ============================================================
    BASIC HELPERS
    ============================================================ */
+
 function cleanName(name) {
-  return name
+
+  return String(name || "")
     .trim()
     .replace(/\s+/g, " ");
+
 }
+
+
 function normalizeName(name) {
+
   return cleanName(name)
     .toLowerCase();
+
 }
+
+
 function getPlayerName(playerId) {
+
   if (
     playersData[playerId] &&
     playersData[playerId].name
   ) {
+
     return playersData[playerId].name;
+
   }
+
   return "Unknown Player";
+
 }
+
+
 function getRating(playerId) {
+
   const player =
     playersData[playerId];
+
   if (!player) {
-    return 1000;
+
+    return DEFAULT_RATING;
+
   }
+
   return Number(
-    player.rating ?? 1000
+    player.rating ?? DEFAULT_RATING
   );
+
 }
+
+
+function getSkill(playerId) {
+
+  const skill =
+    playersData[playerId]?.skill;
+
+  if (
+    skill === "Beginner" ||
+    skill === "Intermediate" ||
+    skill === "Advanced"
+  ) {
+
+    return skill;
+
+  }
+
+  return "Intermediate";
+
+}
+
+
+function skillRank(skill) {
+
+  if (skill === "Advanced") {
+    return 3;
+  }
+
+  if (skill === "Intermediate") {
+    return 2;
+  }
+
+  return 1;
+
+}
+
+
 function getWinRate(player) {
+
   const games =
     Number(player.gamesPlayed || 0);
+
   const wins =
     Number(player.wins || 0);
+
   if (games === 0) {
     return 0;
   }
+
   return (
     wins / games
   ) * 100;
+
 }
+
+
 function getPointDifference(player) {
+
   return (
     Number(player.pointsFor || 0) -
     Number(player.pointsAgainst || 0)
   );
+
 }
+
+
 function escapeHtml(text) {
+
   return String(text)
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
+
 }
+
+
+/* ============================================================
+   PLAYER ELIGIBILITY
+   ============================================================ */
+
+function maxGames() {
+
+  return Number(
+    settingsData.maxGames || 0
+  );
+
+}
+
+
+function playerHasReachedMaxGames(
+  playerId
+) {
+
+  const limit =
+    maxGames();
+
+  if (limit === 0) {
+    return false;
+  }
+
+  const games =
+    Number(
+      playersData[playerId]?.gamesPlayed || 0
+    );
+
+  return games >= limit;
+
+}
+
+
+function playerIsAvailable(playerId) {
+
+  const player =
+    playersData[playerId];
+
+  if (!player) {
+    return false;
+  }
+
+  return player.available !== false;
+
+}
+
+
+function playerIsEligible(playerId) {
+
+  if (!playersData[playerId]) {
+    return false;
+  }
+
+  if (!playerIsAvailable(playerId)) {
+    return false;
+  }
+
+  if (
+    playerHasReachedMaxGames(playerId)
+  ) {
+
+    return false;
+
+  }
+
+  if (playerIsPlaying(playerId)) {
+    return false;
+  }
+
+  return true;
+
+}
+
+
 /* ============================================================
    SESSION STATUS
    ============================================================ */
+
 function sessionIsActive() {
+
   return (
     !sessionData ||
     sessionData.status !== "completed"
   );
+
 }
+
+
 /* ============================================================
-   QUEUE CHECK
+   QUEUE
    ============================================================ */
+
 function playerIsQueued(playerId) {
+
   return Object.values(queueData)
     .some(entry => {
+
       return (
         entry &&
         entry.playerId === playerId
       );
+
     });
+
 }
+
+
 /* ============================================================
    ACTIVE COURT CHECK
    ============================================================ */
+
 function playerIsPlaying(playerId) {
+
   for (
     const courtId of [
       "court1",
       "court2"
     ]
   ) {
+
     const court =
       courtsData[courtId];
+
     if (!court) {
       continue;
     }
-    if (
-      court.playing !== true
-    ) {
+
+    if (court.playing !== true) {
       continue;
     }
+
     if (
       !Array.isArray(
         court.players
@@ -763,534 +1581,1359 @@ function playerIsPlaying(playerId) {
     ) {
       continue;
     }
-    const found =
+
+    if (
       court.players.some(
-        player => {
-          return (
-            player &&
-            player.playerId ===
-              playerId
-          );
-        }
-      );
-    if (found) {
+        player =>
+          player &&
+          player.playerId === playerId
+      )
+    ) {
+
       return true;
+
     }
+
   }
+
   return false;
+
 }
+
+
 /* ============================================================
    PAIR HELPERS
    ============================================================ */
+
 function pairKey(a, b) {
+
   return [a, b]
     .sort()
     .join("|");
+
 }
+
+
 function groupKey(ids) {
+
   return ids
     .slice()
     .sort()
     .join("|");
+
 }
+
+
+/* ============================================================
+   LOCKED PARTNERS
+   ============================================================ */
+
+function getLockedPartnerId(playerId) {
+
+  return (
+    playersData[playerId]?.lockedPartnerId ||
+    ""
+  );
+
+}
+
+
+function isMutualLockedPair(a, b) {
+
+  return (
+    a &&
+    b &&
+    a !== b &&
+    getLockedPartnerId(a) === b &&
+    getLockedPartnerId(b) === a
+  );
+
+}
+
+
+function getMutualLockedPairs(waiting) {
+
+  const ids =
+    waiting.map(
+      p => p.playerId
+    );
+
+  const pairs = [];
+
+  const used = new Set();
+
+  for (const id of ids) {
+
+    if (used.has(id)) {
+      continue;
+    }
+
+    const partner =
+      getLockedPartnerId(id);
+
+    if (
+      partner &&
+      ids.includes(partner) &&
+      isMutualLockedPair(
+        id,
+        partner
+      )
+    ) {
+
+      pairs.push([
+        id,
+        partner
+      ]);
+
+      used.add(id);
+
+      used.add(partner);
+
+    }
+
+  }
+
+  return pairs;
+
+}
+
+
 /* ============================================================
    MATCH HISTORY HELPERS
    ============================================================ */
+
 function groupHasPlayed(ids) {
+
   const key =
     groupKey(ids);
+
   return Object.values(historyData)
     .some(match => {
+
       if (
         !match ||
         !Array.isArray(
           match.players
         )
       ) {
+
         return false;
+
       }
+
       return (
         groupKey(match.players) ===
         key
       );
+
     });
+
 }
+
+
 function pairHasPlayedTogether(a, b) {
+
   const key =
     pairKey(a, b);
+
   return Object.values(historyData)
     .some(match => {
+
       if (
         !match ||
         !Array.isArray(
           match.teams
         )
       ) {
+
         return false;
+
       }
-      return match.teams.some(
-        team => {
-          if (
-            !Array.isArray(team) ||
-            team.length !== 2
-          ) {
-            return false;
-          }
-          return (
-            pairKey(
-              team[0],
-              team[1]
-            ) === key
-          );
+
+      return match.teams.some(team => {
+
+        if (
+          !Array.isArray(team) ||
+          team.length !== 2
+        ) {
+
+          return false;
+
         }
-      );
+
+        return (
+          pairKey(
+            team[0],
+            team[1]
+          ) === key
+        );
+
+      });
+
     });
+
 }
+
+
 function pairHasPlayedAgainst(a, b) {
+
   return Object.values(historyData)
     .some(match => {
+
       if (
         !match ||
         !Array.isArray(
           match.teams
         )
       ) {
+
         return false;
+
       }
+
       let teamA = null;
+
       let teamB = null;
+
       for (
         const team of match.teams
       ) {
+
         if (
           Array.isArray(team) &&
           team.includes(a)
         ) {
+
           teamA = team;
+
         }
+
         if (
           Array.isArray(team) &&
           team.includes(b)
         ) {
+
           teamB = team;
+
         }
+
       }
+
       return (
         teamA &&
         teamB &&
         teamA !== teamB
       );
+
     });
+
 }
+
+
 /* ============================================================
    JOIN QUEUE
    ============================================================ */
+
 async function joinQueue() {
-  const input =
-    document.getElementById(
-      "playerName"
-    );
-  const name =
-    cleanName(input.value);
-  if (!name) {
-    alert(
-      "Please enter your name."
-    );
-    return;
-  }
+
   if (!sessionIsActive()) {
+
     alert(
       "This session is completed.\n\n" +
       "Please wait for Admin to start a new session."
     );
+
     return;
+
   }
+
   try {
-    let playerId = null;
-    for (
-      const id in playersData
-    ) {
-      const player =
-        playersData[id];
-      if (
-        player &&
-        player.name &&
-        normalizeName(
-          player.name
-        ) ===
-        normalizeName(name)
-      ) {
-        playerId = id;
-        break;
-      }
+
+    const select =
+      document.getElementById(
+        "playerSelect"
+      );
+
+    const input =
+      document.getElementById(
+        "playerName"
+      );
+
+    let playerId =
+      select.value || null;
+
+    let name =
+      cleanName(input.value);
+
+    if (playerId) {
+
+      name =
+        getPlayerName(playerId);
+
     }
+
+    if (!playerId && !name) {
+
+      alert(
+        "Please select a player or enter a new player name."
+      );
+
+      return;
+
+    }
+
     if (!playerId) {
+
+      for (
+        const id in playersData
+      ) {
+
+        const player =
+          playersData[id];
+
+        if (
+          player &&
+          normalizeName(player.name) ===
+          normalizeName(name)
+        ) {
+
+          playerId = id;
+
+          break;
+
+        }
+
+      }
+
+    }
+
+    if (!playerId) {
+
+      if (
+        Object.keys(queueData).length >=
+        MAX_QUEUE
+      ) {
+
+        alert(
+          "Queue is full. Maximum " +
+          MAX_QUEUE +
+          " waiting players."
+        );
+
+        return;
+
+      }
+
       const newPlayer =
         push(playersRef);
+
       playerId =
         newPlayer.key;
+
       await set(
         newPlayer,
         {
-          name: name,
+
+          name,
+
+          skill: "Intermediate",
+
+          available: true,
+
+          lockedPartnerId: "",
+
           gamesPlayed: 0,
+
           wins: 0,
+
           losses: 0,
+
           pointsFor: 0,
+
           pointsAgainst: 0,
-          rating: 1000,
-          createdAt:
-            Date.now()
+
+          rating: DEFAULT_RATING,
+
+          createdAt: Date.now()
+
         }
       );
+
     }
+
     if (
-      playerIsPlaying(
-        playerId
-      )
+      !playerIsAvailable(playerId)
     ) {
+
       alert(
         getPlayerName(playerId) +
-        " is already playing on a court!"
+        " is currently marked unavailable by Admin."
       );
-      input.value = "";
+
       return;
+
     }
+
     if (
-      playerIsQueued(
-        playerId
-      )
+      playerHasReachedMaxGames(playerId)
     ) {
+
       alert(
         getPlayerName(playerId) +
-        " is already in the queue!"
+        " has reached the maximum games for this session."
       );
-      input.value = "";
+
       return;
+
     }
-    const queueSize =
-      Object.keys(
-        queueData
-      ).length;
+
     if (
-      queueSize >= MAX_QUEUE
+      playerIsPlaying(playerId)
     ) {
+
+      alert(
+        getPlayerName(playerId) +
+        " is already playing on a court."
+      );
+
+      return;
+
+    }
+
+    if (
+      playerIsQueued(playerId)
+    ) {
+
+      alert(
+        getPlayerName(playerId) +
+        " is already in the queue."
+      );
+
+      return;
+
+    }
+
+    if (
+      Object.keys(queueData).length >=
+      MAX_QUEUE
+    ) {
+
       alert(
         "Queue is full. Maximum " +
         MAX_QUEUE +
         " waiting players."
       );
+
       return;
+
     }
+
     await push(
       queueRef,
       {
-        playerId:
-          playerId,
-        joinedAt:
-          Date.now()
+
+        playerId,
+
+        joinedAt: Date.now()
+
       }
     );
+
+    select.value = "";
+
     input.value = "";
+
   } catch (error) {
+
     console.error(
       "JOIN ERROR:",
       error
     );
+
     alert(
       "Unable to add player.\n\n" +
-      error.message
+      (error?.message || error)
     );
+
   }
+
 }
+
+
 /* ============================================================
    SMART MATCH SELECTION
    ============================================================ */
+
 function choosePlayers() {
+
   const waiting =
     Object.entries(queueData)
+
       .filter(
         ([queueId, entry]) => {
+
           return (
             entry &&
             entry.playerId &&
-            playersData[
+            playerIsEligible(
               entry.playerId
-            ]
+            )
           );
+
         }
       )
+
       .map(
         ([queueId, entry]) => {
+
           const player =
             playersData[
               entry.playerId
             ];
+
           return {
-            queueId:
-              queueId,
+
+            queueId,
+
             playerId:
               entry.playerId,
+
             name:
               player.name,
+
+            skill:
+              getSkill(
+                entry.playerId
+              ),
+
             gamesPlayed:
-              player.gamesPlayed || 0,
+              Number(
+                player.gamesPlayed || 0
+              ),
+
             joinedAt:
               entry.joinedAt ||
               Date.now()
+
           };
+
         }
       );
-  if (
-    waiting.length < 4
-  ) {
+
+
+  if (waiting.length < 4) {
+
     return null;
+
   }
+
+
   waiting.sort(
     (a, b) => {
+
       if (
         a.gamesPlayed !==
         b.gamesPlayed
       ) {
+
         return (
           a.gamesPlayed -
           b.gamesPlayed
         );
+
       }
+
       return (
         a.joinedAt -
         b.joinedAt
       );
+
     }
   );
+
+
+  const lockedPairs =
+    getMutualLockedPairs(
+      waiting
+    );
+
+
+  /*
+    LOCKED PARTNERS HAVE PRIORITY.
+
+    Two locked pairs:
+      Pair 1 vs Pair 2
+
+    One locked pair:
+      Locked pair + best two others
+  */
+
+  if (lockedPairs.length >= 2) {
+
+    const ids = [
+      ...lockedPairs[0],
+      ...lockedPairs[1]
+    ];
+
+    return ids.map(id => {
+
+      return waiting.find(
+        p => p.playerId === id
+      );
+
+    });
+
+  }
+
+
+  if (lockedPairs.length === 1) {
+
+    const locked =
+      lockedPairs[0];
+
+    const lockedPlayers =
+      locked.map(id =>
+        waiting.find(
+          p => p.playerId === id
+        )
+      );
+
+
+    const others =
+      waiting.filter(
+        p =>
+          !locked.includes(
+            p.playerId
+          )
+      );
+
+
+    others.sort(
+      candidateScoreCompare
+    );
+
+
+    return [
+      lockedPlayers[0],
+      lockedPlayers[1],
+      others[0],
+      others[1]
+    ];
+
+  }
+
+
+  /*
+    NORMAL MATCHMAKING
+  */
+
   const candidates =
     waiting.slice(0, 12);
+
   let bestGroup = null;
+
   let bestScore =
     Infinity;
+
+
   for (
     let a = 0;
-    a <
-      candidates.length - 3;
+    a < candidates.length - 3;
     a++
   ) {
+
     for (
       let b = a + 1;
-      b <
-        candidates.length - 2;
+      b < candidates.length - 2;
       b++
     ) {
+
       for (
         let c = b + 1;
-        c <
-          candidates.length - 1;
+        c < candidates.length - 1;
         c++
       ) {
+
         for (
           let d = c + 1;
-          d <
-            candidates.length;
+          d < candidates.length;
           d++
         ) {
+
           const group = [
+
             candidates[a],
+
             candidates[b],
+
             candidates[c],
+
             candidates[d]
+
           ];
+
+
           const ids =
             group.map(
               p => p.playerId
             );
+
+
           let score = 0;
+
+
+          /*
+            FAIR GAME COUNT
+          */
+
           for (
             const player of group
           ) {
+
             score +=
               player.gamesPlayed *
               100;
+
           }
+
+
+          /*
+            WAIT TIME
+          */
+
           for (
             const player of group
           ) {
+
             const wait =
               (
                 Date.now() -
                 player.joinedAt
               ) / 1000;
+
             score -=
               Math.min(
                 wait / 10,
                 100
               );
+
           }
+
+
+          /*
+            REPEAT GROUP
+          */
+
           if (
             groupHasPlayed(ids)
           ) {
+
             score += 10000;
+
           }
+
+
+          /*
+            TEAMMATE REPEAT
+          */
+
           const teammatePairs = [
+
             [ids[0], ids[1]],
+
             [ids[2], ids[3]]
+
           ];
+
+
           for (
-            const pair
-              of teammatePairs
+            const pair of teammatePairs
           ) {
+
             if (
               pairHasPlayedTogether(
                 pair[0],
                 pair[1]
               )
             ) {
+
               score += 1000;
+
             }
+
           }
+
+
+          /*
+            OPPONENT REPEAT
+          */
+
           const opponentPairs = [
+
             [ids[0], ids[2]],
+
             [ids[0], ids[3]],
+
             [ids[1], ids[2]],
+
             [ids[1], ids[3]]
+
           ];
+
+
           for (
-            const pair
-              of opponentPairs
+            const pair of opponentPairs
           ) {
+
             if (
               pairHasPlayedAgainst(
                 pair[0],
                 pair[1]
               )
             ) {
+
               score += 200;
+
             }
+
           }
+
+
+          /*
+            SKILL MODE
+          */
+
+          if (
+            settingsData.matchmakingMode ===
+            "group"
+          ) {
+
+            const ranks =
+              group.map(
+                p =>
+                  skillRank(
+                    p.skill
+                  )
+              );
+
+            const minRank =
+              Math.min(...ranks);
+
+            const maxRank =
+              Math.max(...ranks);
+
+            score +=
+              (maxRank - minRank) *
+              500;
+
+          }
+
+
+          /*
+            MIX SKILLS:
+            Slightly reward variety.
+          */
+
+          if (
+            settingsData.matchmakingMode ===
+            "mix"
+          ) {
+
+            const uniqueSkills =
+              new Set(
+                group.map(
+                  p => p.skill
+                )
+              ).size;
+
+            score -=
+              uniqueSkills * 25;
+
+          }
+
+
           if (
             score < bestScore
           ) {
+
             bestScore =
               score;
+
             bestGroup =
               group;
+
           }
+
         }
+
       }
+
     }
+
   }
+
+
   return bestGroup;
+
 }
+
+
+function candidateScoreCompare(a, b) {
+
+  if (
+    a.gamesPlayed !==
+    b.gamesPlayed
+  ) {
+
+    return (
+      a.gamesPlayed -
+      b.gamesPlayed
+    );
+
+  }
+
+  return (
+    a.joinedAt -
+    b.joinedAt
+  );
+
+}
+
+
 /* ============================================================
    CHOOSE TEAMS
    ============================================================ */
+
 function bestTeams(players) {
+
+  if (
+    !Array.isArray(players) ||
+    players.length !== 4
+  ) {
+
+    return [];
+
+  }
+
+
   const ids =
     players.map(
       p => p.playerId
     );
+
+
+  /*
+    LOCKED PAIRS MUST NEVER
+    BE SEPARATED.
+  */
+
+  const pair1 =
+    ids.find(
+      id =>
+        getLockedPartnerId(id) &&
+        ids.includes(
+          getLockedPartnerId(id)
+        ) &&
+        isMutualLockedPair(
+          id,
+          getLockedPartnerId(id)
+        )
+    );
+
+
+  if (pair1) {
+
+    const partner =
+      getLockedPartnerId(pair1);
+
+    const remaining =
+      ids.filter(
+        id =>
+          id !== pair1 &&
+          id !== partner
+      );
+
+
+    const pair2Candidate =
+      remaining.find(
+        id =>
+          isMutualLockedPair(
+            id,
+            getLockedPartnerId(id)
+          ) &&
+          remaining.includes(
+            getLockedPartnerId(id)
+          )
+      );
+
+
+    if (pair2Candidate) {
+
+      return [
+
+        [
+          pair1,
+          partner
+        ],
+
+        [
+          pair2Candidate,
+          getLockedPartnerId(
+            pair2Candidate
+          )
+        ]
+
+      ];
+
+    }
+
+
+    return [
+
+      [
+        pair1,
+        partner
+      ],
+
+      remaining
+
+    ];
+
+  }
+
+
   const options = [
+
     [
       [ids[0], ids[1]],
       [ids[2], ids[3]]
     ],
+
     [
       [ids[0], ids[2]],
       [ids[1], ids[3]]
     ],
+
     [
       [ids[0], ids[3]],
       [ids[1], ids[2]]
     ]
+
   ];
+
+
   let best =
     options[0];
+
   let bestScore =
     Infinity;
+
+
   for (
     const teams of options
   ) {
+
     let score = 0;
+
+
     for (
       const team of teams
     ) {
+
       if (
         pairHasPlayedTogether(
           team[0],
           team[1]
         )
       ) {
+
         score += 1000;
+
       }
+
     }
+
+
+    if (
+      settingsData.matchmakingMode ===
+      "group"
+    ) {
+
+      const team1Skill =
+        teamSkillAverage(
+          teams[0]
+        );
+
+      const team2Skill =
+        teamSkillAverage(
+          teams[1]
+        );
+
+      score +=
+        Math.abs(
+          team1Skill -
+          team2Skill
+        ) * 200;
+
+    }
+
+
     if (
       score < bestScore
     ) {
+
       bestScore =
         score;
+
       best =
         teams;
+
     }
+
   }
+
+
   return best;
+
 }
+
+
+function teamSkillAverage(ids) {
+
+  if (!ids.length) {
+    return 2;
+  }
+
+  return (
+    ids.reduce(
+      (sum, id) =>
+        sum +
+        skillRank(
+          getSkill(id)
+        ),
+      0
+    ) /
+    ids.length
+  );
+
+}
+
+
+/* ============================================================
+   VALIDATE TEAMS
+   ============================================================ */
+
+function teamsAreValid(teams) {
+
+  if (
+    !Array.isArray(teams) ||
+    teams.length !== 2
+  ) {
+
+    return false;
+
+  }
+
+  if (
+    teams.some(
+      team =>
+        !Array.isArray(team) ||
+        team.length !== 2
+    )
+  ) {
+
+    return false;
+
+  }
+
+  return true;
+
+}
+
+
+function lockedPairsAreTogether(
+  teams
+) {
+
+  const allIds =
+    teams.flat();
+
+  for (
+    const id of allIds
+  ) {
+
+    const partner =
+      getLockedPartnerId(id);
+
+    if (
+      partner &&
+      allIds.includes(partner) &&
+      isMutualLockedPair(
+        id,
+        partner
+      )
+    ) {
+
+      const sameTeam =
+        teams.some(
+          team =>
+            team.includes(id) &&
+            team.includes(partner)
+        );
+
+      if (!sameTeam) {
+
+        return false;
+
+      }
+
+    }
+
+  }
+
+  return true;
+
+}
+
+
 /* ============================================================
    START GAME
    ============================================================ */
+
 async function startNextGame(
   courtId
 ) {
+
   if (!isAdmin) {
+
     alert(
       "Admin login required."
     );
+
     return;
+
   }
+
+
   if (!sessionIsActive()) {
+
     alert(
       "Session is completed.\n\n" +
       "Start a new session first."
     );
+
     return;
+
   }
+
+
   const court =
     courtsData[courtId];
+
+
   if (
     court &&
     court.playing === true
   ) {
+
     alert(
       "There is already a game on " +
       courtId
     );
+
     return;
+
   }
+
+
   const selected =
     choosePlayers();
+
+
   if (!selected) {
+
     alert(
-      "At least 4 players are required."
+      "At least 4 eligible players are required."
     );
+
     return;
+
   }
+
+
+  if (
+    selected.length !== 4
+  ) {
+
+    alert(
+      "Unable to create a 4-player game."
+    );
+
+    return;
+
+  }
+
+
   for (
     const player of selected
   ) {
+
     if (
-      playerIsPlaying(
+      !playerIsEligible(
         player.playerId
       )
     ) {
+
       alert(
         player.name +
-        " is already playing."
+        " is no longer eligible."
       );
+
       return;
+
     }
+
   }
+
+
   const teams =
     bestTeams(selected);
+
+
+  if (
+    !teamsAreValid(teams)
+  ) {
+
+    alert(
+      "Unable to create teams. Please check the locked partner settings."
+    );
+
+    return;
+
+  }
+
+
+  if (
+    !lockedPairsAreTogether(teams)
+  ) {
+
+    alert(
+      "Locked partners cannot be separated."
+    );
+
+    return;
+
+  }
+
+
+  /*
+    REMOVE FROM QUEUE
+  */
+
   for (
     const player of selected
   ) {
+
     await remove(
       ref(
         database,
@@ -1298,14 +2941,24 @@ async function startNextGame(
         player.queueId
       )
     );
+
   }
+
+
+  /*
+    INCREMENT GAMES
+  */
+
   for (
     const player of selected
   ) {
+
     const current =
       playersData[
         player.playerId
       ] || {};
+
+
     await set(
       ref(
         database,
@@ -1313,28 +2966,65 @@ async function startNextGame(
         player.playerId
       ),
       {
+
         name:
           current.name ||
           player.name,
+
+        skill:
+          current.skill ||
+          "Intermediate",
+
+        available:
+          current.available !== false,
+
+        lockedPartnerId:
+          current.lockedPartnerId ||
+          "",
+
         gamesPlayed:
-          (current.gamesPlayed || 0) + 1,
+          Number(
+            current.gamesPlayed || 0
+          ) + 1,
+
         wins:
-          current.wins || 0,
+          Number(
+            current.wins || 0
+          ),
+
         losses:
-          current.losses || 0,
+          Number(
+            current.losses || 0
+          ),
+
         pointsFor:
-          current.pointsFor || 0,
+          Number(
+            current.pointsFor || 0
+          ),
+
         pointsAgainst:
-          current.pointsAgainst || 0,
+          Number(
+            current.pointsAgainst || 0
+          ),
+
         rating:
           current.rating ??
-          1000,
+          DEFAULT_RATING,
+
         createdAt:
           current.createdAt ||
           Date.now()
+
       }
     );
+
   }
+
+
+  /*
+    SAVE COURT
+  */
+
   await set(
     ref(
       database,
@@ -1342,32 +3032,45 @@ async function startNextGame(
       courtId
     ),
     {
+
       playing: true,
+
       players:
         selected.map(
-          player => {
-            return {
-              playerId:
-                player.playerId,
-              name:
-                player.name
-            };
-          }
+          player => ({
+
+            playerId:
+              player.playerId,
+
+            name:
+              player.name,
+
+            skill:
+              player.skill
+
+          })
         ),
-      teams:
-        teams,
+
+      teams,
+
       startedAt:
         Date.now()
+
     }
   );
+
 }
+
+
 /* ============================================================
    ELO / SS RATING
    ============================================================ */
+
 function expectedScore(
   ratingA,
   ratingB
 ) {
+
   return 1 /
     (
       1 +
@@ -1376,31 +3079,39 @@ function expectedScore(
         (ratingB - ratingA) / 400
       )
     );
+
 }
-function calculateTeamRating(
-  ids
-) {
+
+
+function calculateTeamRating(ids) {
+
   if (
     !ids ||
     ids.length === 0
   ) {
-    return 1000;
+
+    return DEFAULT_RATING;
+
   }
+
+
   const total =
     ids.reduce(
-      (sum, id) => {
-        return (
-          sum +
-          getRating(id)
-        );
-      },
+      (sum, id) =>
+        sum +
+        getRating(id),
       0
     );
+
+
   return (
     total /
     ids.length
   );
+
 }
+
+
 function calculateRatingChange(
   team1Ids,
   team2Ids,
@@ -1408,33 +3119,48 @@ function calculateRatingChange(
   score1,
   score2
 ) {
+
   const rating1 =
     calculateTeamRating(
       team1Ids
     );
+
   const rating2 =
     calculateTeamRating(
       team2Ids
     );
+
+
   const expected1 =
     expectedScore(
       rating1,
       rating2
     );
+
+
   const actual1 =
     team1Won
       ? 1
       : 0;
+
+
   const K = 32;
+
+
   const margin =
     Math.abs(
-      score1 - score2
+      score1 -
+      score2
     );
+
+
   const multiplier =
     Math.min(
       1.5,
       1 + margin / 20
     );
+
+
   const change =
     Math.round(
       K *
@@ -1444,92 +3170,146 @@ function calculateRatingChange(
         expected1
       )
     );
+
+
   return {
+
     team1:
       change,
+
     team2:
       -change
+
   };
+
 }
+
+
 /* ============================================================
    END GAME
    ============================================================ */
+
 async function endGame(
   courtId
 ) {
+
   if (!isAdmin) {
+
     alert(
       "Admin login required."
     );
+
     return;
+
   }
+
+
   const court =
     courtsData[courtId];
+
+
   if (
     !court ||
     court.playing !== true
   ) {
+
     alert(
       "No active game."
     );
+
     return;
+
   }
+
+
   const teams =
     court.teams || [];
+
+
   if (
-    !Array.isArray(teams) ||
-    teams.length !== 2 ||
-    !Array.isArray(teams[0]) ||
-    !Array.isArray(teams[1])
+    !teamsAreValid(teams)
   ) {
+
     alert(
       "Invalid team information."
     );
+
     return;
+
   }
+
+
   const score1Input =
     prompt(
       "Enter Team 1 score:"
     );
+
+
   if (
     score1Input === null
   ) {
+
     return;
+
   }
+
+
   const score2Input =
     prompt(
       "Enter Team 2 score:"
     );
+
+
   if (
     score2Input === null
   ) {
+
     return;
+
   }
+
+
   const score1 =
     Number(score1Input);
+
+
   const score2 =
     Number(score2Input);
+
+
   if (
     !Number.isInteger(score1) ||
     !Number.isInteger(score2) ||
     score1 < 0 ||
     score2 < 0
   ) {
+
     alert(
       "Please enter valid whole-number scores."
     );
+
     return;
+
   }
+
+
   if (
     score1 === score2
   ) {
+
     alert(
       "A pickleball match cannot end in a tie."
     );
+
     return;
+
   }
+
+
   const team1Won =
     score1 > score2;
+
+
   const ratingChange =
     calculateRatingChange(
       teams[0],
@@ -1538,11 +3318,20 @@ async function endGame(
       score1,
       score2
     );
+
+
+  /*
+    UPDATE TEAM 1
+  */
+
   for (
     const playerId of teams[0]
   ) {
+
     const current =
       playersData[playerId] || {};
+
+
     await set(
       ref(
         database,
@@ -1550,53 +3339,93 @@ async function endGame(
         playerId
       ),
       {
+
         name:
           current.name ||
           getPlayerName(playerId),
+
+        skill:
+          current.skill ||
+          "Intermediate",
+
+        available:
+          current.available !== false,
+
+        lockedPartnerId:
+          current.lockedPartnerId ||
+          "",
+
         gamesPlayed:
-          current.gamesPlayed || 0,
+          Number(
+            current.gamesPlayed || 0
+          ),
+
         wins:
-          (current.wins || 0) +
+          Number(
+            current.wins || 0
+          ) +
           (
             team1Won
               ? 1
               : 0
           ),
+
         losses:
-          (current.losses || 0) +
+          Number(
+            current.losses || 0
+          ) +
           (
             team1Won
               ? 0
               : 1
           ),
+
         pointsFor:
-          (current.pointsFor || 0) +
+          Number(
+            current.pointsFor || 0
+          ) +
           score1,
+
         pointsAgainst:
-          (current.pointsAgainst || 0) +
+          Number(
+            current.pointsAgainst || 0
+          ) +
           score2,
+
         rating:
           Math.max(
             0,
             Math.round(
               (
                 current.rating ??
-                1000
+                DEFAULT_RATING
               ) +
               ratingChange.team1
             )
           ),
+
         createdAt:
           current.createdAt ||
           Date.now()
+
       }
     );
+
   }
+
+
+  /*
+    UPDATE TEAM 2
+  */
+
   for (
     const playerId of teams[1]
   ) {
+
     const current =
       playersData[playerId] || {};
+
+
     await set(
       ref(
         database,
@@ -1604,108 +3433,196 @@ async function endGame(
         playerId
       ),
       {
+
         name:
           current.name ||
           getPlayerName(playerId),
+
+        skill:
+          current.skill ||
+          "Intermediate",
+
+        available:
+          current.available !== false,
+
+        lockedPartnerId:
+          current.lockedPartnerId ||
+          "",
+
         gamesPlayed:
-          current.gamesPlayed || 0,
+          Number(
+            current.gamesPlayed || 0
+          ),
+
         wins:
-          (current.wins || 0) +
+          Number(
+            current.wins || 0
+          ) +
           (
             team1Won
               ? 0
               : 1
           ),
+
         losses:
-          (current.losses || 0) +
+          Number(
+            current.losses || 0
+          ) +
           (
             team1Won
               ? 1
               : 0
           ),
+
         pointsFor:
-          (current.pointsFor || 0) +
+          Number(
+            current.pointsFor || 0
+          ) +
           score2,
+
         pointsAgainst:
-          (current.pointsAgainst || 0) +
+          Number(
+            current.pointsAgainst || 0
+          ) +
           score1,
+
         rating:
           Math.max(
             0,
             Math.round(
               (
                 current.rating ??
-                1000
+                DEFAULT_RATING
               ) +
               ratingChange.team2
             )
           ),
+
         createdAt:
           current.createdAt ||
           Date.now()
+
       }
     );
+
   }
+
+
+  /*
+    SAVE MATCH HISTORY
+  */
+
   await push(
     historyRef,
     {
+
       court:
         courtId,
+
       players:
         (court.players || [])
           .map(
             p => p.playerId
           ),
-      teams:
-        teams,
-      score:
-        [
-          score1,
-          score2
-        ],
+
+      playerNames:
+        (court.players || [])
+          .map(
+            p => p.name
+          ),
+
+      teams,
+
+      score: [
+        score1,
+        score2
+      ],
+
       winnerTeam:
         team1Won
           ? 1
           : 2,
-      ratingChange:
-        [
-          ratingChange.team1,
-          ratingChange.team2
-        ],
+
+      ratingChange: [
+        ratingChange.team1,
+        ratingChange.team2
+      ],
+
       time:
         Date.now()
+
     }
   );
+
+
   /*
     EVERYONE ROTATES.
-    Put all 4 at the back.
+
+    Players who are unavailable
+    do not return to queue.
   */
+
   for (
     const player of
       court.players || []
   ) {
+
     if (
       !player ||
       !player.playerId
     ) {
+
       continue;
+
     }
+
+
+    if (
+      !playerIsAvailable(
+        player.playerId
+      )
+    ) {
+
+      continue;
+
+    }
+
+
+    if (
+      playerHasReachedMaxGames(
+        player.playerId
+      )
+    ) {
+
+      continue;
+
+    }
+
+
     if (
       !playerIsQueued(
         player.playerId
       )
     ) {
+
       await push(
         queueRef,
         {
+
           playerId:
             player.playerId,
+
           joinedAt:
             Date.now()
+
         }
       );
+
     }
+
   }
+
+
   await remove(
     ref(
       database,
@@ -1713,48 +3630,963 @@ async function endGame(
       courtId
     )
   );
+
+
   alert(
     "🏆 MATCH COMPLETED!\n\n" +
+
     "Team 1: " +
     score1 +
+
     "\n" +
+
     "Team 2: " +
     score2 +
+
     "\n\n" +
+
     "SS Rating Change:\n" +
+
     "Team 1: " +
+
     (
       ratingChange.team1 >= 0
         ? "+"
         : ""
     ) +
+
     ratingChange.team1 +
+
     "\n" +
+
     "Team 2: " +
+
     (
       ratingChange.team2 >= 0
         ? "+"
         : ""
     ) +
+
     ratingChange.team2
   );
+
 }
+
+
 /* ============================================================
-   COMPLETE SESSION
+   REPLACE PLAYER ON ACTIVE COURT
    ============================================================ */
-async function completeSession() {
+
+async function replaceCourtPlayer(
+  courtId,
+  oldPlayerId,
+  newPlayerId
+) {
+
   if (!isAdmin) {
+
     alert(
       "Admin login required."
     );
+
+    return;
+
+  }
+
+
+  const court =
+    courtsData[courtId];
+
+
+  if (
+    !court ||
+    court.playing !== true
+  ) {
+
+    alert(
+      "No active game."
+    );
+
+    return;
+
+  }
+
+
+  if (
+    oldPlayerId === newPlayerId
+  ) {
+
+    return;
+
+  }
+
+
+  const oldPlayer =
+    playersData[oldPlayerId];
+
+  const newPlayer =
+    playersData[newPlayerId];
+
+
+  if (!oldPlayer || !newPlayer) {
+
+    alert(
+      "Player information not found."
+    );
+
+    return;
+
+  }
+
+
+  if (
+    !playerIsAvailable(newPlayerId)
+  ) {
+
+    alert(
+      "Replacement player is unavailable."
+    );
+
+    return;
+
+  }
+
+
+  if (
+    playerIsPlaying(newPlayerId)
+  ) {
+
+    alert(
+      "Replacement player is already playing."
+    );
+
+    return;
+
+  }
+
+
+  if (
+    !playerIsQueued(newPlayerId)
+  ) {
+
+    alert(
+      "Replacement player must be in the queue."
+    );
+
+    return;
+
+  }
+
+
+  if (
+    playerHasReachedMaxGames(
+      newPlayerId
+    )
+  ) {
+
+    alert(
+      "Replacement player has already reached the maximum games."
+    );
+
+    return;
+
+  }
+
+
+  /*
+    FIND THE ORIGINAL PLAYER'S TEAM
+  */
+
+  let oldTeamIndex = -1;
+
+
+  for (
+    let i = 0;
+    i < court.teams.length;
+    i++
+  ) {
+
+    if (
+      court.teams[i].includes(
+        oldPlayerId
+      )
+    ) {
+
+      oldTeamIndex = i;
+
+      break;
+
+    }
+
+  }
+
+
+  if (oldTeamIndex === -1) {
+
+    alert(
+      "Original player was not found in a team."
+    );
+
+    return;
+
+  }
+
+
+  const oldIndex =
+    court.players.findIndex(
+      p =>
+        p.playerId ===
+        oldPlayerId
+    );
+
+
+  if (oldIndex === -1) {
+
+    alert(
+      "Original player was not found on the court."
+    );
+
+    return;
+
+  }
+
+
+  const replacementQueueId =
+    Object.keys(queueData)
+      .find(
+        key =>
+          queueData[key]?.playerId ===
+          newPlayerId
+      );
+
+
+  /*
+    REMOVE REPLACEMENT FROM QUEUE
+  */
+
+  if (replacementQueueId) {
+
+    await remove(
+      ref(
+        database,
+        "queue/" +
+        replacementQueueId
+      )
+    );
+
+  }
+
+
+  /*
+    ORIGINAL PLAYER:
+    DECREMENT THE GAME THAT
+    WAS COUNTED AT GAME START.
+  */
+
+  await set(
+    ref(
+      database,
+      "players/" +
+      oldPlayerId
+    ),
+    {
+
+      name:
+        oldPlayer.name,
+
+      skill:
+        oldPlayer.skill ||
+        "Intermediate",
+
+      available: false,
+
+      lockedPartnerId:
+        oldPlayer.lockedPartnerId ||
+        "",
+
+      gamesPlayed:
+        Math.max(
+          0,
+          Number(
+            oldPlayer.gamesPlayed || 0
+          ) - 1
+        ),
+
+      wins:
+        Number(
+          oldPlayer.wins || 0
+        ),
+
+      losses:
+        Number(
+          oldPlayer.losses || 0
+        ),
+
+      pointsFor:
+        Number(
+          oldPlayer.pointsFor || 0
+        ),
+
+      pointsAgainst:
+        Number(
+          oldPlayer.pointsAgainst || 0
+        ),
+
+      rating:
+        oldPlayer.rating ??
+        DEFAULT_RATING,
+
+      createdAt:
+        oldPlayer.createdAt ||
+        Date.now()
+
+    }
+  );
+
+
+  /*
+    REPLACEMENT:
+    ADD ONE GAME.
+  */
+
+  await set(
+    ref(
+      database,
+      "players/" +
+      newPlayerId
+    ),
+    {
+
+      name:
+        newPlayer.name,
+
+      skill:
+        newPlayer.skill ||
+        "Intermediate",
+
+      available:
+        true,
+
+      lockedPartnerId:
+        newPlayer.lockedPartnerId ||
+        "",
+
+      gamesPlayed:
+        Number(
+          newPlayer.gamesPlayed || 0
+        ) + 1,
+
+      wins:
+        Number(
+          newPlayer.wins || 0
+        ),
+
+      losses:
+        Number(
+          newPlayer.losses || 0
+        ),
+
+      pointsFor:
+        Number(
+          newPlayer.pointsFor || 0
+        ),
+
+      pointsAgainst:
+        Number(
+          newPlayer.pointsAgainst || 0
+        ),
+
+      rating:
+        newPlayer.rating ??
+        DEFAULT_RATING,
+
+      createdAt:
+        newPlayer.createdAt ||
+        Date.now()
+
+    }
+  );
+
+
+  /*
+    REPLACE PLAYER IN COURT
+  */
+
+  const newCourtPlayers =
+    [...court.players];
+
+  newCourtPlayers[oldIndex] = {
+
+    playerId:
+      newPlayerId,
+
+    name:
+      newPlayer.name,
+
+    skill:
+      newPlayer.skill ||
+      "Intermediate",
+
+    replacedPlayerId:
+      oldPlayerId,
+
+    replacedPlayerName:
+      oldPlayer.name,
+
+    replacementAt:
+      Date.now()
+
+  };
+
+
+  const newTeams =
+    court.teams.map(
+      team =>
+        team.map(
+          id =>
+            id === oldPlayerId
+              ? newPlayerId
+              : id
+        )
+    );
+
+
+  await set(
+    ref(
+      database,
+      "courts/" +
+      courtId
+    ),
+    {
+
+      ...court,
+
+      players:
+        newCourtPlayers,
+
+      teams:
+        newTeams
+
+    }
+  );
+
+
+  alert(
+    "🔄 PLAYER REPLACED!\n\n" +
+
+    oldPlayer.name +
+
+    " is now unavailable.\n\n" +
+
+    newPlayer.name +
+
+    " has replaced them on " +
+
+    (
+      courtId === "court1"
+        ? "Court 1"
+        : "Court 2"
+    ) +
+
+    "."
+  );
+
+}
+
+
+/* ============================================================
+   PLAYER AVAILABILITY
+   ============================================================ */
+
+async function toggleAvailability(
+  playerId
+) {
+
+  if (!isAdmin) {
+
+    alert(
+      "Admin login required."
+    );
+
+    return;
+
+  }
+
+
+  const player =
+    playersData[playerId];
+
+
+  if (!player) {
     return;
   }
+
+
+  const newAvailable =
+    player.available === false;
+
+
+  await set(
+    ref(
+      database,
+      "players/" +
+      playerId
+    ),
+    {
+
+      ...player,
+
+      available:
+        newAvailable
+
+    }
+  );
+
+
+  alert(
+    player.name +
+    (
+      newAvailable
+        ? " is now AVAILABLE."
+        : " is now UNAVAILABLE."
+    )
+  );
+
+}
+
+
+/* ============================================================
+   SKILL
+   ============================================================ */
+
+async function updatePlayerSkill(
+  playerId,
+  skill
+) {
+
+  if (!isAdmin) {
+    return;
+  }
+
+
+  const player =
+    playersData[playerId];
+
+
+  if (!player) {
+    return;
+  }
+
+
+  await set(
+    ref(
+      database,
+      "players/" +
+      playerId
+    ),
+    {
+
+      ...player,
+
+      skill
+
+    }
+  );
+
+}
+
+
+/* ============================================================
+   LOCK PARTNER
+   ============================================================ */
+
+async function setLockedPartner(
+  playerId,
+  partnerId
+) {
+
+  if (!isAdmin) {
+
+    alert(
+      "Admin login required."
+    );
+
+    return;
+
+  }
+
+
+  const player =
+    playersData[playerId];
+
+
+  if (!player) {
+    return;
+  }
+
+
+  /*
+    REMOVE EXISTING PARTNER
+    MUTUALLY
+  */
+
+  const oldPartner =
+    player.lockedPartnerId || "";
+
+
+  if (oldPartner) {
+
+    const oldPartnerData =
+      playersData[oldPartner];
+
+
+    if (
+      oldPartnerData &&
+      oldPartnerData.lockedPartnerId ===
+      playerId
+    ) {
+
+      await set(
+        ref(
+          database,
+          "players/" +
+          oldPartner
+        ),
+        {
+
+          ...oldPartnerData,
+
+          lockedPartnerId: ""
+
+        }
+      );
+
+    }
+
+  }
+
+
+  /*
+    CLEAR PLAYER
+  */
+
+  if (!partnerId) {
+
+    await set(
+      ref(
+        database,
+        "players/" +
+        playerId
+      ),
+      {
+
+        ...player,
+
+        lockedPartnerId: ""
+
+      }
+    );
+
+    return;
+
+  }
+
+
+  if (partnerId === playerId) {
+
+    alert(
+      "A player cannot be their own partner."
+    );
+
+    return;
+
+  }
+
+
+  const partner =
+    playersData[partnerId];
+
+
+  if (!partner) {
+    return;
+  }
+
+
+  /*
+    REMOVE PARTNER'S OLD LOCK
+  */
+
+  const partnerOld =
+    partner.lockedPartnerId || "";
+
+
+  if (partnerOld) {
+
+    const oldPartnerData =
+      playersData[partnerOld];
+
+
+    if (
+      oldPartnerData &&
+      oldPartnerData.lockedPartnerId ===
+      partnerId
+    ) {
+
+      await set(
+        ref(
+          database,
+          "players/" +
+          partnerOld
+        ),
+        {
+
+          ...oldPartnerData,
+
+          lockedPartnerId: ""
+
+        }
+      );
+
+    }
+
+  }
+
+
+  /*
+    MUTUAL LOCK
+  */
+
+  await set(
+    ref(
+      database,
+      "players/" +
+      playerId
+    ),
+    {
+
+      ...player,
+
+      lockedPartnerId:
+        partnerId
+
+    }
+  );
+
+
+  await set(
+    ref(
+      database,
+      "players/" +
+      partnerId
+    ),
+    {
+
+      ...partner,
+
+      lockedPartnerId:
+        playerId
+
+    }
+  );
+
+
+  alert(
+    "🔒 Partner locked!\n\n" +
+    player.name +
+    " & " +
+    partner.name +
+    " will stay together."
+  );
+
+}
+
+
+/* ============================================================
+   ADD PLAYER
+   ============================================================ */
+
+async function addPlayer() {
+
+  if (!isAdmin) {
+
+    alert(
+      "Admin login required."
+    );
+
+    return;
+
+  }
+
+
+  try {
+
+    const input =
+      document.getElementById(
+        "newPlayerName"
+      );
+
+
+    const skill =
+      document.getElementById(
+        "newPlayerSkill"
+      ).value;
+
+
+    const name =
+      cleanName(input.value);
+
+
+    if (!name) {
+
+      alert(
+        "Please enter the player's name."
+      );
+
+      return;
+
+    }
+
+
+    const duplicate =
+      Object.values(playersData)
+        .some(
+          p =>
+            normalizeName(
+              p?.name || ""
+            ) ===
+            normalizeName(name)
+        );
+
+
+    if (duplicate) {
+
+      alert(
+        "A player with that name already exists."
+      );
+
+      return;
+
+    }
+
+
+    const playerRef =
+      push(playersRef);
+
+
+    await set(
+      playerRef,
+      {
+
+        name,
+
+        skill,
+
+        available: true,
+
+        lockedPartnerId: "",
+
+        gamesPlayed: 0,
+
+        wins: 0,
+
+        losses: 0,
+
+        pointsFor: 0,
+
+        pointsAgainst: 0,
+
+        rating: DEFAULT_RATING,
+
+        createdAt: Date.now()
+
+      }
+    );
+
+
+    input.value = "";
+
+    document.getElementById(
+      "newPlayerSkill"
+    ).value =
+      "Intermediate";
+
+
+    alert(
+      name +
+      " has been added successfully."
+    );
+
+  } catch (error) {
+
+    console.error(
+      "ADD PLAYER ERROR:",
+      error
+    );
+
+    alert(
+      "Unable to add player.\n\n" +
+      (error?.message || error)
+    );
+
+  }
+
+}
+
+
+/* ============================================================
+   ANNOUNCE PLAYER
+   ============================================================ */
+
+function announcePlayer(
+  playerId
+) {
+
+  if (!voiceEnabled) {
+
+    alert(
+      "Please turn Voice ON first."
+    );
+
+    return;
+
+  }
+
+
+  announce(
+    getPlayerName(playerId)
+  );
+
+}
+
+
+/* ============================================================
+   SESSION
+   ============================================================ */
+
+async function completeSession() {
+
+  if (!isAdmin) {
+
+    alert(
+      "Admin login required."
+    );
+
+    return;
+
+  }
+
+
   if (!sessionIsActive()) {
+
     alert(
       "This session is already completed."
     );
+
     return;
+
   }
+
+
   const activeGames =
     Object.values(courtsData)
       .filter(
@@ -1762,75 +4594,129 @@ async function completeSession() {
           court &&
           court.playing === true
       );
+
+
   if (
     activeGames.length > 0
   ) {
+
     alert(
       "Please finish all active games before completing the session."
     );
+
     return;
+
   }
+
+
   const confirmComplete =
     confirm(
       "🏆 COMPLETE SESSION?\n\n" +
+
       "This will:\n" +
+
       "• Stop new players from joining\n" +
+
       "• Stop new games from starting\n" +
+
       "• Freeze the final leaderboard\n\n" +
+
       "Continue?"
     );
+
+
   if (!confirmComplete) {
     return;
   }
+
+
   await set(
     sessionRef,
     {
+
       status:
         "completed",
+
       startedAt:
         sessionData.startedAt ||
         Date.now(),
+
       completedAt:
         Date.now()
+
     }
   );
+
+
+  announce(
+    "Sunday Smashers session completed. Congratulations everyone."
+  );
+
+
   alert(
     "🏆 SESSION COMPLETED!\n\n" +
     "Check the Top Players section."
   );
+
 }
+
+
 /* ============================================================
    START NEW SESSION
    ============================================================ */
+
 async function startNewSession() {
+
   if (!isAdmin) {
+
     alert(
       "Admin login required."
     );
+
     return;
+
   }
+
+
   const answer =
     confirm(
       "🔄 START NEW SESSION?\n\n" +
+
       "This will:\n" +
+
       "• Clear the queue\n" +
+
       "• Clear active courts\n" +
+
       "• Reset session statistics\n" +
+
       "• Reset ratings to 1000\n" +
-      "• Keep player names\n\n" +
+
+      "• Keep player names\n" +
+
+      "• Keep skill levels\n" +
+
+      "• Keep locked partners\n\n" +
+
       "Match history will also be cleared.\n\n" +
+
       "Continue?"
     );
+
+
   if (!answer) {
     return;
   }
-  await remove(
-    queueRef
-  );
-  await remove(
-    courtsRef
-  );
+
+
+  await remove(queueRef);
+
+  await remove(courtsRef);
+
+
   const newPlayers = {};
+
+
   for (
     const [
       id,
@@ -1839,70 +4725,191 @@ async function startNewSession() {
       playersData
     )
   ) {
+
     newPlayers[id] = {
+
       name:
         player.name,
-      gamesPlayed:
-        0,
-      wins:
-        0,
-      losses:
-        0,
-      pointsFor:
-        0,
-      pointsAgainst:
-        0,
+
+      skill:
+        player.skill ||
+        "Intermediate",
+
+      available:
+        player.available !== false,
+
+      lockedPartnerId:
+        player.lockedPartnerId ||
+        "",
+
+      gamesPlayed: 0,
+
+      wins: 0,
+
+      losses: 0,
+
+      pointsFor: 0,
+
+      pointsAgainst: 0,
+
       rating:
-        1000,
+        DEFAULT_RATING,
+
       createdAt:
         player.createdAt ||
         Date.now()
+
     };
+
   }
+
+
   await set(
     playersRef,
     newPlayers
   );
+
+
   await remove(
     historyRef
   );
+
+
   await set(
     sessionRef,
     {
+
       status:
         "active",
+
       startedAt:
         Date.now(),
+
       completedAt:
         null
+
     }
   );
+
+
   alert(
     "🔄 NEW SESSION STARTED!\n\n" +
     "All player ratings and session statistics have been reset."
   );
+
 }
+
+
 /* ============================================================
-   REMOVE PLAYER
+   RESET EVERYTHING
    ============================================================ */
-async function removePlayer(
-  queueId
-) {
+
+async function resetSession() {
+
   if (!isAdmin) {
+
     alert(
       "Admin login required."
     );
+
+    return;
+
+  }
+
+
+  const answer =
+    confirm(
+      "⚠️ RESET EVERYTHING?\n\n" +
+
+      "This will remove:\n" +
+
+      "• All players\n" +
+
+      "• Queue\n" +
+
+      "• Courts\n" +
+
+      "• Match history\n" +
+
+      "• Session\n" +
+
+      "• Settings\n\n" +
+
+      "This cannot be undone."
+    );
+
+
+  if (!answer) {
     return;
   }
+
+
+  await remove(
+    ref(database, "queue")
+  );
+
+  await remove(
+    ref(database, "courts")
+  );
+
+  await remove(
+    ref(database, "players")
+  );
+
+  await remove(
+    ref(database, "matchHistory")
+  );
+
+  await remove(
+    ref(database, "session")
+  );
+
+  await remove(
+    ref(database, "settings")
+  );
+
+
+  alert(
+    "Everything has been reset."
+  );
+
+}
+
+
+/* ============================================================
+   REMOVE QUEUE PLAYER
+   ============================================================ */
+
+async function removeQueuePlayer(
+  queueId
+) {
+
+  if (!isAdmin) {
+
+    alert(
+      "Admin login required."
+    );
+
+    return;
+
+  }
+
+
   const entry =
     queueData[queueId];
+
+
   if (!entry) {
     return;
   }
+
+
   const name =
     getPlayerName(
       entry.playerId
     );
+
+
   if (
     !confirm(
       "Remove " +
@@ -1910,8 +4917,12 @@ async function removePlayer(
       " from the queue?"
     )
   ) {
+
     return;
+
   }
+
+
   await remove(
     ref(
       database,
@@ -1919,148 +4930,503 @@ async function removePlayer(
       queueId
     )
   );
+
 }
+
+
 /* ============================================================
-   ADMIN LOGIN — MOBILE FRIENDLY
+   DELETE PLAYER
    ============================================================ */
+
+async function deletePlayer(
+  playerId
+) {
+
+  if (!isAdmin) {
+    return;
+  }
+
+
+  const player =
+    playersData[playerId];
+
+
+  if (!player) {
+    return;
+  }
+
+
+  if (
+    playerIsPlaying(playerId)
+  ) {
+
+    alert(
+      "A player cannot be deleted while playing."
+    );
+
+    return;
+
+  }
+
+
+  if (
+    playerIsQueued(playerId)
+  ) {
+
+    alert(
+      "Remove the player from the queue first."
+    );
+
+    return;
+
+  }
+
+
+  if (
+    !confirm(
+      "Delete " +
+      player.name +
+      " permanently?"
+    )
+  ) {
+
+    return;
+
+  }
+
+
+  await remove(
+    ref(
+      database,
+      "players/" +
+      playerId
+    )
+  );
+
+
+  /*
+    CLEAR PARTNER'S LOCK
+  */
+
+  const partnerId =
+    player.lockedPartnerId;
+
+
+  if (partnerId) {
+
+    const partner =
+      playersData[partnerId];
+
+
+    if (partner) {
+
+      await set(
+        ref(
+          database,
+          "players/" +
+          partnerId
+        ),
+        {
+
+          ...partner,
+
+          lockedPartnerId: ""
+
+        }
+      );
+
+    }
+
+  }
+
+}
+
+
+/* ============================================================
+   ADMIN LOGIN
+   ============================================================ */
+
 function adminLogin() {
+
   const modal =
     document.getElementById(
       "adminModal"
     );
+
+
   const input =
     document.getElementById(
       "adminPinInput"
     );
+
+
   modal.style.display =
     "flex";
+
+
   input.value = "";
+
+
   setTimeout(
     () => {
       input.focus();
     },
     100
   );
+
 }
+
+
 function closeAdminModal() {
+
   document.getElementById(
     "adminModal"
   ).style.display =
     "none";
+
 }
+
+
 function verifyAdminPin() {
+
   const input =
     document.getElementById(
       "adminPinInput"
     );
+
+
   const pin =
     input.value.trim();
+
+
   if (
-    pin === "1234"
+    pin === ADMIN_PIN
   ) {
+
     isAdmin = true;
+
+
     document
       .getElementById(
         "adminPanel"
       )
       .classList
       .add("active");
+
+
     closeAdminModal();
+
+
     renderAll();
+
+
     alert(
       "✅ Admin mode enabled."
     );
+
   } else {
+
     input.value = "";
+
+
     alert(
       "❌ Incorrect Admin PIN."
     );
+
+
     setTimeout(
       () => {
         input.focus();
       },
       100
     );
+
   }
+
 }
+
+
 /* ============================================================
-   RESET EVERYTHING
+   SAVE SETTINGS
    ============================================================ */
-async function resetSession() {
+
+async function saveMaxGames() {
+
   if (!isAdmin) {
+    return;
+  }
+
+
+  let value =
+    Number(
+      document.getElementById(
+        "maxGamesInput"
+      ).value
+    );
+
+
+  if (
+    !Number.isInteger(value) ||
+    value < 0
+  ) {
+
     alert(
-      "Admin login required."
+      "Please enter 0 or a positive whole number."
     );
+
     return;
+
   }
-  const answer =
-    confirm(
-      "⚠️ RESET EVERYTHING?\n\n" +
-      "This will remove:\n" +
-      "• All players\n" +
-      "• Queue\n" +
-      "• Courts\n" +
-      "• Match history\n" +
-      "• Session\n\n" +
-      "This cannot be undone."
-    );
-  if (!answer) {
-    return;
+
+
+  if (value > 50) {
+
+    value = 50;
+
   }
-  await remove(
-    ref(database, "queue")
+
+
+  settingsData.maxGames =
+    value;
+
+
+  await set(
+    settingsRef,
+    {
+
+      ...settingsData,
+
+      maxGames:
+        value
+
+    }
   );
-  await remove(
-    ref(database, "courts")
-  );
-  await remove(
-    ref(database, "players")
-  );
-  await remove(
-    ref(database, "matchHistory")
-  );
-  await remove(
-    ref(database, "session")
-  );
+
+
   alert(
-    "Everything has been reset."
+    value === 0
+      ? "Maximum games set to UNLIMITED."
+      : "Maximum games per player set to " +
+        value +
+        "."
   );
+
+
+  renderAll();
+
 }
+
+
+async function saveMatchmakingMode() {
+
+  if (!isAdmin) {
+    return;
+  }
+
+
+  const mode =
+    document.getElementById(
+      "matchmakingMode"
+    ).value;
+
+
+  settingsData.matchmakingMode =
+    mode;
+
+
+  await set(
+    settingsRef,
+    {
+
+      ...settingsData,
+
+      matchmakingMode:
+        mode
+
+    }
+  );
+
+
+  alert(
+    mode === "group"
+      ? "Matchmaking set to GROUP BY SKILL."
+      : "Matchmaking set to MIX SKILLS."
+  );
+
+
+  renderAll();
+
+}
+
+
 /* ============================================================
    RENDER SESSION STATUS
    ============================================================ */
+
 function renderSessionStatus() {
+
   const status =
     document.getElementById(
       "sessionStatus"
     );
+
+
   if (
     sessionData.status ===
     "completed"
   ) {
+
     status.className =
       "session-status session-complete";
+
+
     status.textContent =
       "🏆 SESSION COMPLETED — FINAL RANKINGS";
+
   } else {
+
     status.className =
       "session-status session-active";
+
+
     status.textContent =
       "🟢 SESSION ACTIVE";
+
   }
+
 }
+
+
+/* ============================================================
+   RENDER PLAYER SELECT
+   ============================================================ */
+
+function renderPlayerSelect() {
+
+  const select =
+    document.getElementById(
+      "playerSelect"
+    );
+
+
+  const current =
+    select.value;
+
+
+  select.innerHTML =
+    '<option value="">Select player...</option>';
+
+
+  const players =
+    Object.entries(
+      playersData
+    )
+      .sort(
+        (a, b) =>
+          String(
+            a[1]?.name || ""
+          ).localeCompare(
+            String(
+              b[1]?.name || ""
+            )
+          )
+      );
+
+
+  players.forEach(
+    ([id, player]) => {
+
+      if (!player) {
+        return;
+      }
+
+
+      const option =
+        document.createElement(
+          "option"
+        );
+
+
+      option.value =
+        id;
+
+
+      let text =
+        player.name;
+
+
+      if (
+        player.available === false
+      ) {
+
+        text +=
+          " — UNAVAILABLE";
+
+      } else if (
+        playerHasReachedMaxGames(id)
+      ) {
+
+        text +=
+          " — MAX GAMES";
+
+      } else {
+
+        text +=
+          " — " +
+          getSkill(id);
+
+      }
+
+
+      option.textContent =
+        text;
+
+
+      option.disabled =
+        !playerIsEligible(id);
+
+
+      select.appendChild(
+        option
+      );
+
+    }
+  );
+
+
+  if (
+    current &&
+    [...select.options]
+      .some(
+        o =>
+          o.value === current
+      )
+  ) {
+
+    select.value =
+      current;
+
+  }
+
+}
+
+
 /* ============================================================
    RENDER QUEUE
    ============================================================ */
+
 function renderQueue() {
+
   const list =
     document.getElementById(
       "queueList"
     );
+
+
   const count =
-    Object.keys(
-      queueData
-    ).length;
+    Object.keys(queueData).length;
+
+
   document
     .getElementById(
       "queueCount"
@@ -2069,18 +5435,30 @@ function renderQueue() {
       count +
       " / " +
       MAX_QUEUE;
+
+
   if (
     count === 0
   ) {
+
     list.innerHTML =
       '<div class="empty">No players waiting.</div>';
+
+
     renderNextUp();
+
+
     return;
+
   }
+
+
   const entries =
     Object.entries(queueData)
+
       .filter(
         ([id, entry]) => {
+
           return (
             entry &&
             entry.playerId &&
@@ -2088,179 +5466,406 @@ function renderQueue() {
               entry.playerId
             ]
           );
+
         }
       )
+
       .sort(
-        (a, b) => {
-          return (
-            (a[1].joinedAt || 0) -
-            (b[1].joinedAt || 0)
-          );
-        }
+        (a, b) =>
+          (
+            a[1].joinedAt || 0
+          ) -
+          (
+            b[1].joinedAt || 0
+          )
       );
+
+
   list.innerHTML = "";
+
+
   entries.forEach(
     ([queueId, entry], index) => {
+
       const player =
         playersData[
           entry.playerId
         ];
+
+
       const row =
         document.createElement(
           "div"
         );
+
+
       row.className =
         "player";
+
+
+      const available =
+        player.available !== false;
+
+
+      let statusBadge = "";
+
+
+      if (!available) {
+
+        statusBadge =
+          '<span class="badge badge-red">UNAVAILABLE</span>';
+
+      } else if (
+        playerHasReachedMaxGames(
+          entry.playerId
+        )
+      ) {
+
+        statusBadge =
+          '<span class="badge badge-orange">MAX GAMES</span>';
+
+      }
+
+
       let html = `
+
         <div>
+
           <div class="player-name">
+
             ${index + 1}.
             ${escapeHtml(
               player.name
             )}
+
+            ${statusBadge}
+
           </div>
+
           <div class="game-count">
-            Games played:
+
+            ${escapeHtml(
+              getSkill(
+                entry.playerId
+              )
+            )}
+
+            • Games:
             ${player.gamesPlayed || 0}
+
+            ${
+              maxGames() > 0
+                ? " / " + maxGames()
+                : ""
+            }
+
             • Rating:
             ${player.rating ?? 1000}
+
           </div>
+
         </div>
+
       `;
+
+
       if (isAdmin) {
+
         html += `
+
           <button
             class="danger remove-btn"
             data-id="${queueId}">
+
             Remove
+
           </button>
+
         `;
+
       }
+
+
       row.innerHTML =
         html;
+
+
       if (isAdmin) {
+
         const button =
           row.querySelector(
             ".remove-btn"
           );
+
+
         button.addEventListener(
           "click",
           () => {
-            removePlayer(
+
+            removeQueuePlayer(
               queueId
             );
+
           }
         );
+
       }
+
+
       list.appendChild(
         row
       );
+
     }
   );
+
+
   renderNextUp();
+
 }
+
+
 /* ============================================================
    NEXT UP
    ============================================================ */
+
 function renderNextUp() {
+
   const container =
     document.getElementById(
       "nextUp"
     );
+
+
   if (
     !sessionIsActive()
   ) {
+
     container.innerHTML =
       '<div class="empty">Session completed.</div>';
+
+
     return;
+
   }
+
+
   const selected =
     choosePlayers();
+
+
   if (!selected) {
+
     container.innerHTML =
-      '<div class="empty">Need at least 4 players.</div>';
+      '<div class="empty">Need at least 4 eligible players.</div>';
+
+
     return;
+
   }
-  container.innerHTML =
-    selected
-      .map(player => {
-        return `
-          <span class="next-player">
+
+
+  const teams =
+    bestTeams(selected);
+
+
+  let html = "";
+
+
+  selected.forEach(
+    player => {
+
+      html += `
+
+        <span class="next-player">
+
+          ${escapeHtml(
+            player.name
+          )}
+
+          <br>
+
+          <small>
             ${escapeHtml(
-              player.name
+              player.skill
             )}
-          </span>
-        `;
-      })
-      .join("");
+          </small>
+
+        </span>
+
+      `;
+
+    }
+  );
+
+
+  if (
+    teamsAreValid(teams)
+  ) {
+
+    html += `
+
+      <div style="margin-top:12px">
+
+        <strong>
+          Suggested Teams:
+        </strong>
+
+        <br><br>
+
+        <span class="badge">
+          Team 1:
+          ${escapeHtml(
+            getPlayerName(
+              teams[0][0]
+            )
+          )}
+          &
+          ${escapeHtml(
+            getPlayerName(
+              teams[0][1]
+            )
+          )}
+        </span>
+
+        <span class="badge">
+          Team 2:
+          ${escapeHtml(
+            getPlayerName(
+              teams[1][0]
+            )
+          )}
+          &
+          ${escapeHtml(
+            getPlayerName(
+              teams[1][1]
+            )
+          )}
+        </span>
+
+      </div>
+
+    `;
+
+  }
+
+
+  container.innerHTML =
+    html;
+
 }
+
+
 /* ============================================================
-   RENDER COURTS
+   COURTS
    ============================================================ */
+
 function renderCourts() {
+
   renderCourt("court1");
+
   renderCourt("court2");
+
 }
-function renderCourt(
-  courtId
-) {
+
+
+function renderCourt(courtId) {
+
   const container =
     document.getElementById(
       courtId
     );
+
+
   const court =
     courtsData[courtId];
+
+
   const title =
     courtId === "court1"
       ? "Court 1"
       : "Court 2";
+
+
   if (
     !court ||
     court.playing !== true
   ) {
+
     container.className =
       "court";
+
+
     container.innerHTML = `
+
       <h3>
         ${title}
       </h3>
+
       <div class="empty">
         Available
       </div>
+
     `;
+
+
     if (
       isAdmin &&
       sessionIsActive()
     ) {
+
       const button =
         document.createElement(
           "button"
         );
+
+
       button.className =
         "success";
+
+
       button.textContent =
         "▶️ Start Next Game";
+
+
       button.addEventListener(
         "click",
         () => {
+
           startNextGame(
             courtId
           );
+
         }
       );
+
+
       container.appendChild(
         button
       );
+
     }
+
+
     return;
+
   }
+
+
   container.className =
     "court playing";
+
+
   const players =
     court.players || [];
+
+
   const teams =
     court.teams || [];
+
+
   function teamNames(team) {
+
     return team
       .map(
         id =>
@@ -2269,33 +5874,82 @@ function renderCourt(
           )
       )
       .join(" & ");
+
   }
+
+
   container.innerHTML = `
+
     <h3>
+
       ${title}
-      <span class="badge">
+
+      <span class="badge badge-green">
         PLAYING
       </span>
+
     </h3>
+
     <div>
+
       ${players
-        .map(player => `
-          <div class="player">
-            <div class="player-name">
-              ${escapeHtml(
-                player.name
-              )}
+        .map(
+          player => `
+
+            <div class="player">
+
+              <div>
+
+                <div class="player-name">
+
+                  ${escapeHtml(
+                    player.name
+                  )}
+
+                  <span class="badge">
+                    ${escapeHtml(
+                      player.skill ||
+                      getSkill(
+                        player.playerId
+                      )
+                    )}
+                  </span>
+
+                </div>
+
+                ${
+                  player.replacedPlayerName
+                    ? `
+                      <div class="game-count">
+                        Replaced:
+                        ${escapeHtml(
+                          player.replacedPlayerName
+                        )}
+                      </div>
+                    `
+                    : ""
+                }
+
+              </div>
+
             </div>
-          </div>
-        `)
+
+          `
+        )
         .join("")}
+
     </div>
+
     <div class="teams">
+
       <div class="team">
+
         <strong>
           Team 1
         </strong>
+
         <br><br>
+
         ${
           teams[0]
             ? teamNames(
@@ -2303,12 +5957,17 @@ function renderCourt(
               )
             : "-"
         }
+
       </div>
+
       <div class="team">
+
         <strong>
           Team 2
         </strong>
+
         <br><br>
+
         ${
           teams[1]
             ? teamNames(
@@ -2316,336 +5975,1042 @@ function renderCourt(
               )
             : "-"
         }
+
       </div>
+
     </div>
+
   `;
+
+
   if (isAdmin) {
-    const button =
+
+    const endButton =
       document.createElement(
         "button"
       );
-    button.className =
+
+
+    endButton.className =
       "danger";
-    button.textContent =
+
+
+    endButton.textContent =
       "⏹️ End Game & Enter Score";
-    button.addEventListener(
+
+
+    endButton.addEventListener(
       "click",
       () => {
+
         endGame(
           courtId
         );
+
       }
     );
+
+
     container.appendChild(
-      button
+      endButton
     );
+
+
+    /*
+      REPLACEMENT CONTROLS
+    */
+
+    const replacementBox =
+      document.createElement(
+        "div"
+      );
+
+
+    replacementBox.className =
+      "replacement-box";
+
+
+    replacementBox.innerHTML = `
+
+      <strong>
+        🔄 Emergency Replacement
+      </strong>
+
+      <div class="game-count">
+        Mark the original player unavailable
+        and replace their slot.
+      </div>
+
+      <select class="replacement-player-select">
+
+        <option value="">
+          Select player to replace...
+        </option>
+
+      </select>
+
+      <select class="replacement-new-player-select">
+
+        <option value="">
+          Select replacement...
+        </option>
+
+      </select>
+
+      <button class="orange">
+        🔄 REPLACE PLAYER
+      </button>
+
+    `;
+
+
+    const oldSelect =
+      replacementBox.querySelector(
+        ".replacement-player-select"
+      );
+
+
+    const newSelect =
+      replacementBox.querySelector(
+        ".replacement-new-player-select"
+      );
+
+
+    players.forEach(
+      player => {
+
+        const option =
+          document.createElement(
+            "option"
+          );
+
+
+        option.value =
+          player.playerId;
+
+
+        option.textContent =
+          player.name;
+
+
+        oldSelect.appendChild(
+          option
+        );
+
+      }
+    );
+
+
+    Object.entries(
+      playersData
+    )
+      .filter(
+        ([id]) =>
+          playerIsEligible(id) &&
+          !playerIsPlaying(id)
+      )
+      .forEach(
+        ([id, player]) => {
+
+          const option =
+            document.createElement(
+              "option"
+            );
+
+
+          option.value =
+            id;
+
+
+          option.textContent =
+            player.name +
+            " (" +
+            getSkill(id) +
+            ")";
+
+
+          newSelect.appendChild(
+            option
+          );
+
+        }
+      );
+
+
+    replacementBox
+      .querySelector("button")
+      .addEventListener(
+        "click",
+        () => {
+
+          const oldId =
+            oldSelect.value;
+
+          const newId =
+            newSelect.value;
+
+
+          if (!oldId || !newId) {
+
+            alert(
+              "Select both the player to replace and the replacement player."
+            );
+
+            return;
+
+          }
+
+
+          replaceCourtPlayer(
+            courtId,
+            oldId,
+            newId
+          );
+
+        }
+      );
+
+
+    container.appendChild(
+      replacementBox
+    );
+
   }
+
 }
+
+
+/* ============================================================
+   ADMIN PLAYER MANAGEMENT
+   ============================================================ */
+
+function renderAdminPlayers() {
+
+  const container =
+    document.getElementById(
+      "adminPlayersList"
+    );
+
+
+  if (!isAdmin) {
+
+    container.innerHTML = "";
+
+    return;
+
+  }
+
+
+  const players =
+    Object.entries(
+      playersData
+    )
+      .sort(
+        (a, b) =>
+          String(
+            a[1]?.name || ""
+          ).localeCompare(
+            String(
+              b[1]?.name || ""
+            )
+          )
+      );
+
+
+  if (
+    players.length === 0
+  ) {
+
+    container.innerHTML =
+      '<div class="empty">No players.</div>';
+
+    return;
+
+  }
+
+
+  container.innerHTML = "";
+
+
+  players.forEach(
+    ([id, player]) => {
+
+      const div =
+        document.createElement(
+          "div"
+        );
+
+
+      div.className =
+        "player-admin" +
+        (
+          player.available === false
+            ? " unavailable"
+            : ""
+        );
+
+
+      const partnerId =
+        player.lockedPartnerId || "";
+
+
+      const partnerName =
+        partnerId
+          ? getPlayerName(
+              partnerId
+            )
+          : "";
+
+
+      let status =
+        player.available === false
+          ? '<span class="badge badge-red">UNAVAILABLE</span>'
+          : '<span class="badge badge-green">AVAILABLE</span>';
+
+
+      if (
+        playerHasReachedMaxGames(id)
+      ) {
+
+        status +=
+          ' <span class="badge badge-orange">MAX GAMES</span>';
+
+      }
+
+
+      div.innerHTML = `
+
+        <div class="player-admin-name">
+
+          ${escapeHtml(
+            player.name
+          )}
+
+          ${status}
+
+        </div>
+
+        <div class="player-admin-info">
+
+          Skill:
+          <strong>
+            ${escapeHtml(
+              getSkill(id)
+            )}
+          </strong>
+
+          • Games:
+          ${player.gamesPlayed || 0}
+
+          ${
+            maxGames() > 0
+              ? " / " + maxGames()
+              : " / Unlimited"
+          }
+
+          • Rating:
+          ${player.rating ?? 1000}
+
+        </div>
+
+        ${
+          partnerName
+            ? `
+              <div class="locked-info">
+
+                🔒 Locked Partner:
+                ${escapeHtml(
+                  partnerName
+                )}
+
+              </div>
+            `
+            : `
+              <div class="game-count">
+                No locked partner
+              </div>
+            `
+        }
+
+        <select class="skill-select">
+
+          <option value="Beginner">
+            Beginner
+          </option>
+
+          <option value="Intermediate">
+            Intermediate
+          </option>
+
+          <option value="Advanced">
+            Advanced
+          </option>
+
+        </select>
+
+        <select class="partner-select">
+
+          <option value="">
+            No Locked Partner
+          </option>
+
+        </select>
+
+        <div class="admin-actions">
+
+          <button
+            class="gray availability-button">
+            ${
+              player.available === false
+                ? "🟢 Set Available"
+                : "🔴 Set Unavailable"
+            }
+          </button>
+
+          <button
+            class="purple partner-button">
+            🔒 Save Partner
+          </button>
+
+          <button
+            class="teal announce-button">
+            🔊 Announce
+          </button>
+
+          <button
+            class="danger delete-player-button">
+            🗑️ Delete
+          </button>
+
+        </div>
+
+      `;
+
+
+      const skillSelect =
+        div.querySelector(
+          ".skill-select"
+        );
+
+
+      skillSelect.value =
+        getSkill(id);
+
+
+      skillSelect.addEventListener(
+        "change",
+        () => {
+
+          updatePlayerSkill(
+            id,
+            skillSelect.value
+          );
+
+        }
+      );
+
+
+      const partnerSelect =
+        div.querySelector(
+          ".partner-select"
+        );
+
+
+      Object.entries(
+        playersData
+      )
+        .filter(
+          ([otherId]) =>
+            otherId !== id
+        )
+        .sort(
+          (a, b) =>
+            String(
+              a[1]?.name || ""
+            ).localeCompare(
+              String(
+                b[1]?.name || ""
+              )
+            )
+        )
+        .forEach(
+          ([otherId, other]) => {
+
+            const option =
+              document.createElement(
+                "option"
+              );
+
+
+            option.value =
+              otherId;
+
+
+            option.textContent =
+              other.name;
+
+
+            partnerSelect.appendChild(
+              option
+            );
+
+          }
+        );
+
+
+      partnerSelect.value =
+        partnerId;
+
+
+      div.querySelector(
+        ".availability-button"
+      ).addEventListener(
+        "click",
+        () => {
+
+          toggleAvailability(
+            id
+          );
+
+        }
+      );
+
+
+      div.querySelector(
+        ".partner-button"
+      ).addEventListener(
+        "click",
+        () => {
+
+          setLockedPartner(
+            id,
+            partnerSelect.value
+          );
+
+        }
+      );
+
+
+      div.querySelector(
+        ".announce-button"
+      ).addEventListener(
+        "click",
+        () => {
+
+          announcePlayer(
+            id
+          );
+
+        }
+      );
+
+
+      div.querySelector(
+        ".delete-player-button"
+      ).addEventListener(
+        "click",
+        () => {
+
+          deletePlayer(
+            id
+          );
+
+        }
+      );
+
+
+      container.appendChild(
+        div
+      );
+
+    }
+  );
+
+}
+
+
 /* ============================================================
    RANKINGS
    ============================================================ */
+
 function buildRankingPlayers() {
+
   return Object.entries(
     playersData
   )
     .map(
       ([id, player]) => {
+
         const games =
           Number(
             player.gamesPlayed || 0
           );
+
         const wins =
           Number(
             player.wins || 0
           );
+
         const losses =
           Number(
             player.losses || 0
           );
+
         const pointsFor =
           Number(
             player.pointsFor || 0
           );
+
         const pointsAgainst =
           Number(
             player.pointsAgainst || 0
           );
+
         const pointDifference =
           pointsFor -
           pointsAgainst;
+
         const winRate =
           games > 0
             ? (
                 wins / games
               ) * 100
             : 0;
+
         const rating =
           Number(
-            player.rating ?? 1000
+            player.rating ??
+            DEFAULT_RATING
           );
+
+
         return {
+
           id,
+
           name:
             player.name ||
             "Unknown",
+
           games,
+
           wins,
+
           losses,
+
           pointsFor,
+
           pointsAgainst,
+
           pointDifference,
+
           winRate,
+
           rating
+
         };
+
       }
     )
     .filter(
       player =>
         player.games > 0
     );
+
 }
+
+
 function sortRankings(players) {
+
   players.sort(
     (a, b) => {
+
       if (
         b.rating !==
         a.rating
       ) {
+
         return (
           b.rating -
           a.rating
         );
+
       }
+
       if (
         b.wins !==
         a.wins
       ) {
+
         return (
           b.wins -
           a.wins
         );
+
       }
+
       if (
         b.winRate !==
         a.winRate
       ) {
+
         return (
           b.winRate -
           a.winRate
         );
+
       }
+
       return (
         b.pointDifference -
         a.pointDifference
       );
+
     }
   );
+
+
   return players;
+
 }
+
+
 function renderRankings() {
+
   const container =
     document.getElementById(
       "rankingsList"
     );
+
+
   const players =
     sortRankings(
       buildRankingPlayers()
     );
+
+
   if (
     players.length === 0
   ) {
+
     container.innerHTML =
       '<div class="empty">No rankings yet.</div>';
+
     return;
+
   }
+
+
   container.innerHTML = `
+
     <div class="ranking-row rank-header">
+
       <div>#</div>
+
       <div>PLAYER</div>
+
       <div class="rank-stat">
         RT
       </div>
+
       <div class="rank-stat">
         GP
       </div>
+
       <div class="rank-stat">
         W
       </div>
+
       <div class="rank-stat">
         L
       </div>
+
       <div class="rank-stat">
         PF
       </div>
+
       <div class="rank-stat">
         PD
       </div>
+
       <div class="rank-stat">
         %
       </div>
+
     </div>
+
   `;
+
+
   players.forEach(
     (player, index) => {
+
       let medal = "";
+
+
       if (
         index === 0
       ) {
+
         medal = "🥇";
+
       } else if (
         index === 1
       ) {
+
         medal = "🥈";
+
       } else if (
         index === 2
       ) {
+
         medal = "🥉";
+
       }
+
+
       const pdClass =
         player.pointDifference >= 0
           ? "positive"
           : "negative";
+
+
       container.innerHTML += `
+
         <div class="ranking-row">
+
           <div class="rank-number">
+
             ${medal || index + 1}
+
           </div>
+
           <div class="rank-name">
+
             ${escapeHtml(
               player.name
             )}
+
           </div>
+
           <div class="rank-stat rating">
+
             ${player.rating}
+
           </div>
+
           <div class="rank-stat">
+
             ${player.games}
+
           </div>
+
           <div class="rank-stat win">
+
             ${player.wins}
+
           </div>
+
           <div class="rank-stat loss">
+
             ${player.losses}
+
           </div>
+
           <div class="rank-stat">
+
             ${player.pointsFor}
+
           </div>
+
           <div class="rank-stat ${pdClass}">
+
             ${
               player.pointDifference > 0
                 ? "+" +
                   player.pointDifference
                 : player.pointDifference
             }
+
           </div>
+
           <div class="rank-stat">
+
             ${player.winRate.toFixed(0)}%
+
           </div>
+
         </div>
+
       `;
+
     }
   );
+
+
   container.innerHTML += `
+
     <div class="game-count"
          style="margin-top:10px">
+
       RT = Sunday Smashers Rating.
       New players start at 1000.
       Rating changes based on opponent strength,
       match result and score margin.
+
     </div>
+
   `;
+
 }
+
+
 /* ============================================================
    TOP PLAYERS
    ============================================================ */
+
 function renderTopPlayers() {
+
   const container =
     document.getElementById(
       "topPlayers"
     );
+
+
   const players =
     sortRankings(
       buildRankingPlayers()
     );
+
+
   if (
     players.length === 0
   ) {
+
     container.innerHTML =
       '<div class="empty">Complete some games to see the Top Players.</div>';
+
+
     document.getElementById(
       "awards"
     ).innerHTML = "";
+
+
     return;
+
   }
+
+
   const top3 =
     players.slice(0, 3);
+
+
   container.innerHTML = `
+
     <div class="top-players">
+
       ${top3
         .map(
           (player, index) => {
+
             const medals = [
               "🥇",
               "🥈",
               "🥉"
             ];
+
+
             return `
+
               <div class="top-player">
+
                 <div class="top-medal">
+
                   ${medals[index]}
+
                 </div>
+
                 <div class="top-name">
+
                   ${escapeHtml(
                     player.name
                   )}
+
                 </div>
+
                 <div class="top-rating">
+
                   SS Rating:
+
                   <strong>
                     ${player.rating}
                   </strong>
+
                   <br>
+
                   ${player.wins}W -
                   ${player.losses}L
+
                 </div>
+
               </div>
+
             `;
+
           }
         )
         .join("")}
+
     </div>
+
   `;
+
+
   const mostWins =
     [...players].sort(
       (a, b) =>
-        b.wins - a.wins
+        b.wins -
+        a.wins
     )[0];
+
+
   const eligibleWinRate =
     players.filter(
       player =>
         player.games >= 3
     );
+
+
   const bestWinRate =
     [...eligibleWinRate].sort(
       (a, b) =>
         b.winRate -
         a.winRate
     )[0];
+
+
   const bestPD =
     [...players].sort(
       (a, b) =>
         b.pointDifference -
         a.pointDifference
     )[0];
+
+
   document.getElementById(
     "awards"
   ).innerHTML = `
+
     <div class="awards">
+
       <div class="award">
+
         <div class="award-title">
           🔥 MOST WINS
         </div>
+
         <div class="award-name">
+
           ${
             mostWins
               ? escapeHtml(
@@ -2653,21 +7018,30 @@ function renderTopPlayers() {
                 )
               : "-"
           }
+
         </div>
+
         <div class="award-value">
+
           ${
             mostWins
               ? mostWins.wins +
                 " wins"
               : ""
           }
+
         </div>
+
       </div>
+
       <div class="award">
+
         <div class="award-title">
           🎯 BEST WIN RATE
         </div>
+
         <div class="award-name">
+
           ${
             bestWinRate
               ? escapeHtml(
@@ -2675,8 +7049,11 @@ function renderTopPlayers() {
                 )
               : "-"
           }
+
         </div>
+
         <div class="award-value">
+
           ${
             bestWinRate
               ? bestWinRate.winRate
@@ -2684,13 +7061,19 @@ function renderTopPlayers() {
                 "%"
               : "Minimum 3 games"
           }
+
         </div>
+
       </div>
+
       <div class="award">
+
         <div class="award-title">
           💪 BEST POINT DIFF
         </div>
+
         <div class="award-name">
+
           ${
             bestPD
               ? escapeHtml(
@@ -2698,8 +7081,11 @@ function renderTopPlayers() {
                 )
               : "-"
           }
+
         </div>
+
         <div class="award-value">
+
           ${
             bestPD
               ? (
@@ -2710,51 +7096,77 @@ function renderTopPlayers() {
                 bestPD.pointDifference
               : ""
           }
+
         </div>
+
       </div>
+
     </div>
+
   `;
+
 }
+
+
 /* ============================================================
    MATCH HISTORY
    ============================================================ */
+
 function renderMatchHistory() {
+
   const container =
     document.getElementById(
       "matchHistoryList"
     );
+
+
   const matches =
     Object.values(
       historyData
     )
       .sort(
-        (a, b) => {
-          return (
-            (b.time || 0) -
-            (a.time || 0)
-          );
-        }
+        (a, b) =>
+          (
+            b.time || 0
+          ) -
+          (
+            a.time || 0
+          )
       );
+
+
   if (
     matches.length === 0
   ) {
+
     container.innerHTML =
       '<div class="empty">No matches completed yet.</div>';
+
     return;
+
   }
+
+
   container.innerHTML = "";
+
+
   matches
     .slice(0, 20)
     .forEach(
       match => {
+
         const teams =
           match.teams || [];
+
+
         const scores =
           Array.isArray(
             match.score
           )
             ? match.score
             : null;
+
+
         const team1Names =
           (teams[0] || [])
             .map(
@@ -2764,6 +7176,8 @@ function renderMatchHistory() {
                 )
             )
             .join(" & ");
+
+
         const team2Names =
           (teams[1] || [])
             .map(
@@ -2773,206 +7187,658 @@ function renderMatchHistory() {
                 )
             )
             .join(" & ");
+
+
         const courtName =
           match.court ===
           "court1"
             ? "Court 1"
             : "Court 2";
+
+
         const date =
           match.time
             ? new Date(
                 match.time
               ).toLocaleString()
             : "";
+
+
         const row =
           document.createElement(
             "div"
           );
+
+
         row.className =
           "match-history";
+
+
         if (scores) {
+
           const team1Won =
             scores[0] >
             scores[1];
-          let ratingHTML = "";
+
+
+          let ratingHTML =
+            "";
+
+
           if (
             Array.isArray(
               match.ratingChange
             )
           ) {
+
             ratingHTML = `
+
               <div class="rating-change">
+
                 SS Rating:
+
                 Team 1
                 ${
                   match.ratingChange[0] >= 0
                     ? "+"
                     : ""
                 }${match.ratingChange[0]}
+
                 •
+
                 Team 2
                 ${
                   match.ratingChange[1] >= 0
                     ? "+"
                     : ""
                 }${match.ratingChange[1]}
+
               </div>
+
             `;
+
           }
+
+
           row.innerHTML = `
+
             <div class="match-court">
+
               ${courtName}
               •
               ${date}
+
             </div>
+
             <div class="match-team">
+
               ${team1Names}
+
               ${
                 team1Won
                   ? '<span class="winner-label"> WIN</span>'
                   : ''
               }
+
             </div>
+
             <div class="match-score">
+
               ${scores[0]}
               -
               ${scores[1]}
+
             </div>
+
             <div class="match-team">
+
               ${team2Names}
+
               ${
                 !team1Won
                   ? '<span class="winner-label"> WIN</span>'
                   : ''
               }
+
             </div>
+
             ${ratingHTML}
+
           `;
+
         } else {
+
           row.innerHTML = `
+
             <div class="match-court">
+
               ${courtName}
               •
               ${date}
+
             </div>
+
             <div class="match-team">
+
               ${team1Names}
+
             </div>
+
             <div class="match-score">
+
               Score not recorded
+
             </div>
+
             <div class="match-team">
+
               ${team2Names}
+
             </div>
+
           `;
+
         }
+
+
         container.appendChild(
           row
         );
+
       }
     );
+
 }
+
+
+/* ============================================================
+   RENDER SETTINGS
+   ============================================================ */
+
+function renderSettings() {
+
+  const maxInput =
+    document.getElementById(
+      "maxGamesInput"
+    );
+
+
+  const modeSelect =
+    document.getElementById(
+      "matchmakingMode"
+    );
+
+
+  if (maxInput) {
+
+    maxInput.value =
+      settingsData.maxGames || 0;
+
+  }
+
+
+  if (modeSelect) {
+
+    modeSelect.value =
+      settingsData.matchmakingMode ||
+      "mix";
+
+  }
+
+}
+
+
 /* ============================================================
    RENDER EVERYTHING
    ============================================================ */
+
 function renderAll() {
+
   renderSessionStatus();
+
+  renderPlayerSelect();
+
   renderQueue();
+
   renderCourts();
+
   renderNextUp();
+
   renderTopPlayers();
+
   renderRankings();
+
   renderMatchHistory();
+
+  renderAdminPlayers();
+
+  renderSettings();
+
 }
+
+
+/* ============================================================
+   VOICE — COURT ANNOUNCEMENT
+   ============================================================ */
+
+function courtAnnouncement(
+  courtId,
+  court
+) {
+
+  if (
+    !court ||
+    !Array.isArray(
+      court.players
+    )
+  ) {
+
+    return;
+
+  }
+
+
+  const courtName =
+    courtId === "court1"
+      ? "Court 1"
+      : "Court 2";
+
+
+  const names =
+    court.players.map(
+      p => p.name
+    );
+
+
+  if (
+    names.length !== 4
+  ) {
+
+    return;
+
+  }
+
+
+  announce(
+    courtName +
+    ". New game starting. " +
+
+    names[0] +
+    " and " +
+    names[1] +
+
+    " versus " +
+
+    names[2] +
+    " and " +
+    names[3] +
+    "."
+  );
+
+}
+
+
+/* ============================================================
+   VOICE — HISTORY ANNOUNCEMENT
+   ============================================================ */
+
+function historyAnnouncement(match) {
+
+  if (!match) {
+    return;
+  }
+
+
+  const teams =
+    match.teams || [];
+
+
+  const score =
+    match.score || [];
+
+
+  if (
+    teams.length !== 2 ||
+    score.length !== 2
+  ) {
+
+    return;
+
+  }
+
+
+  const team1 =
+    teams[0]
+      .map(
+        id =>
+          getPlayerName(id)
+      )
+      .join(" and ");
+
+
+  const team2 =
+    teams[1]
+      .map(
+        id =>
+          getPlayerName(id)
+      )
+      .join(" and ");
+
+
+  const winner =
+    score[0] >
+    score[1]
+      ? team1
+      : team2;
+
+
+  announce(
+
+    "Game result. " +
+
+    winner +
+
+    " wins. Final score " +
+
+    score[0] +
+
+    " to " +
+
+    score[1] +
+
+    "."
+
+  );
+
+}
+
+
 /* ============================================================
    FIREBASE REALTIME LISTENERS
    ============================================================ */
+
 onValue(
   playersRef,
   snapshot => {
+
     playersData =
       snapshot.val() || {};
+
     renderAll();
+
   }
 );
+
+
 onValue(
   queueRef,
   snapshot => {
+
     queueData =
       snapshot.val() || {};
+
     renderAll();
+
   }
 );
+
+
 onValue(
   courtsRef,
   snapshot => {
-    courtsData =
+
+    const next =
       snapshot.val() || {};
+
+
+    if (
+      courtsVoiceInitialized
+    ) {
+
+      for (
+        const id of [
+          "court1",
+          "court2"
+        ]
+      ) {
+
+        const old =
+          lastAnnouncedCourts[id];
+
+        const now =
+          next[id];
+
+
+        if (
+          now?.playing &&
+          now.startedAt &&
+          now.startedAt !== old
+        ) {
+
+          courtAnnouncement(
+            id,
+            now
+          );
+
+        }
+
+      }
+
+    }
+
+
+    lastAnnouncedCourts = {
+
+      court1:
+        next.court1?.startedAt ||
+        null,
+
+      court2:
+        next.court2?.startedAt ||
+        null
+
+    };
+
+
+    courtsData =
+      next;
+
+
+    courtsVoiceInitialized =
+      true;
+
+
     renderAll();
+
   }
 );
+
+
 onValue(
   historyRef,
   snapshot => {
-    historyData =
+
+    const next =
       snapshot.val() || {};
+
+
+    if (
+      historyVoiceInitialized
+    ) {
+
+      for (
+        const [key, match]
+        of Object.entries(next)
+      ) {
+
+        if (
+          !lastAnnouncedHistory[key]
+        ) {
+
+          historyAnnouncement(
+            match
+          );
+
+        }
+
+      }
+
+    }
+
+
+    lastAnnouncedHistory =
+      Object.fromEntries(
+        Object.keys(next)
+          .map(
+            key => [
+              key,
+              true
+            ]
+          )
+      );
+
+
+    historyData =
+      next;
+
+
+    historyVoiceInitialized =
+      true;
+
+
     renderAll();
+
   }
 );
+
+
 onValue(
   sessionRef,
   snapshot => {
+
     if (
       snapshot.exists()
     ) {
+
       sessionData =
         snapshot.val();
+
     } else {
+
       sessionData = {
+
         status:
           "active",
+
         startedAt:
           Date.now(),
+
         completedAt:
           null
+
       };
+
     }
+
+
     renderAll();
+
   }
 );
+
+
+onValue(
+  settingsRef,
+  snapshot => {
+
+    if (
+      snapshot.exists()
+    ) {
+
+      settingsData = {
+
+        maxGames:
+          Number(
+            snapshot.val().maxGames || 0
+          ),
+
+        matchmakingMode:
+          snapshot.val()
+            .matchmakingMode ||
+          "mix"
+
+      };
+
+    } else {
+
+      settingsData = {
+
+        maxGames: 0,
+
+        matchmakingMode: "mix"
+
+      };
+
+    }
+
+
+    renderAll();
+
+  }
+);
+
+
 /* ============================================================
    CONNECTION STATUS
    ============================================================ */
+
 const connectedRef =
   ref(
     database,
     ".info/connected"
   );
+
+
 onValue(
   connectedRef,
   snapshot => {
+
     const status =
       document.getElementById(
         "connectionStatus"
       );
+
+
     if (
       snapshot.val() === true
     ) {
+
       status.textContent =
         "🟢 Connected to Firebase";
+
+
       status.style.color =
         "#16a34a";
+
     } else {
+
       status.textContent =
         "🔴 Offline / Connecting...";
+
+
       status.style.color =
         "#dc2626";
+
     }
+
   }
 );
+
+
 /* ============================================================
    BUTTON EVENTS
    ============================================================ */
+
 document
   .getElementById(
     "joinButton"
@@ -2981,6 +7847,8 @@ document
     "click",
     joinQueue
   );
+
+
 document
   .getElementById(
     "adminLoginButton"
@@ -2989,9 +7857,8 @@ document
     "click",
     adminLogin
   );
-/*
-  NEW MOBILE-FRIENDLY ADMIN LOGIN EVENTS
-*/
+
+
 document
   .getElementById(
     "adminPinLogin"
@@ -3000,6 +7867,8 @@ document
     "click",
     verifyAdminPin
   );
+
+
 document
   .getElementById(
     "adminPinCancel"
@@ -3008,6 +7877,8 @@ document
     "click",
     closeAdminModal
   );
+
+
 document
   .getElementById(
     "adminPinInput"
@@ -3015,17 +7886,19 @@ document
   .addEventListener(
     "keydown",
     event => {
+
       if (
         event.key === "Enter"
       ) {
+
         verifyAdminPin();
+
       }
+
     }
   );
-/*
-  Close modal if user taps
-  outside the PIN box.
-*/
+
+
 document
   .getElementById(
     "adminModal"
@@ -3033,14 +7906,20 @@ document
   .addEventListener(
     "click",
     event => {
+
       if (
         event.target.id ===
         "adminModal"
       ) {
+
         closeAdminModal();
+
       }
+
     }
   );
+
+
 document
   .getElementById(
     "startCourt1Button"
@@ -3048,11 +7927,15 @@ document
   .addEventListener(
     "click",
     () => {
+
       startNextGame(
         "court1"
       );
+
     }
   );
+
+
 document
   .getElementById(
     "startCourt2Button"
@@ -3060,11 +7943,15 @@ document
   .addEventListener(
     "click",
     () => {
+
       startNextGame(
         "court2"
       );
+
     }
   );
+
+
 document
   .getElementById(
     "endCourt1Button"
@@ -3072,11 +7959,15 @@ document
   .addEventListener(
     "click",
     () => {
+
       endGame(
         "court1"
       );
+
     }
   );
+
+
 document
   .getElementById(
     "endCourt2Button"
@@ -3084,11 +7975,15 @@ document
   .addEventListener(
     "click",
     () => {
+
       endGame(
         "court2"
       );
+
     }
   );
+
+
 document
   .getElementById(
     "completeSessionButton"
@@ -3097,6 +7992,8 @@ document
     "click",
     completeSession
   );
+
+
 document
   .getElementById(
     "newSessionButton"
@@ -3105,6 +8002,8 @@ document
     "click",
     startNewSession
   );
+
+
 document
   .getElementById(
     "resetButton"
@@ -3113,9 +8012,125 @@ document
     "click",
     resetSession
   );
+
+
+document
+  .getElementById(
+    "addPlayerButton"
+  )
+  .addEventListener(
+    "click",
+    addPlayer
+  );
+
+
+document
+  .getElementById(
+    "saveMaxGamesButton"
+  )
+  .addEventListener(
+    "click",
+    saveMaxGames
+  );
+
+
+document
+  .getElementById(
+    "saveMatchmakingButton"
+  )
+  .addEventListener(
+    "click",
+    saveMatchmakingMode
+  );
+
+
+/* ============================================================
+   VOICE TOGGLE
+   ============================================================ */
+
+document
+  .getElementById(
+    "voiceToggle"
+  )
+  .addEventListener(
+    "change",
+    event => {
+
+      voiceEnabled =
+        event.target.checked;
+
+
+      if (voiceEnabled) {
+
+        /*
+          IMPORTANT:
+          This speech is triggered directly
+          by the user's checkbox interaction.
+          This helps Safari/iPhone allow
+          subsequent announcements.
+        */
+
+        announce(
+          "Voice announcements are now enabled."
+        );
+
+      } else {
+
+        if (
+          window.speechSynthesis
+        ) {
+
+          window.speechSynthesis.cancel();
+
+        }
+
+      }
+
+    }
+  );
+
+
+/* ============================================================
+   VOICE TEST
+   ============================================================ */
+
+document
+  .getElementById(
+    "voiceTestButton"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      if (!voiceEnabled) {
+
+        /*
+          Turn it on first because this
+          button itself is a user gesture.
+        */
+
+        document.getElementById(
+          "voiceToggle"
+        ).checked = true;
+
+
+        voiceEnabled = true;
+
+      }
+
+
+      announce(
+        "This is a Sunday Smashers voice announcement test. Voice is working."
+      );
+
+    }
+  );
+
+
 /* ============================================================
    ENTER KEY
    ============================================================ */
+
 document
   .getElementById(
     "playerName"
@@ -3123,17 +8138,26 @@ document
   .addEventListener(
     "keydown",
     event => {
+
       if (
         event.key === "Enter"
       ) {
+
         joinQueue();
+
       }
+
     }
   );
+
+
 /* ============================================================
    INITIAL RENDER
    ============================================================ */
+
 renderAll();
+
 </script>
+
 </body>
 </html>
